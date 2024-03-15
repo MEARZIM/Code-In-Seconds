@@ -49,7 +49,7 @@ const skills = [
 
 export const Weal = () => {
     return (
-        <section className='bg-inherit h-15  w-full '>
+        <section className='bg-inherit h-15  w-full border-b'>
             <div className='mx-auto overflow-hidden w-3/4 whitespace-nowrap skill-container'>
                 <div className='flex justify-center items-center  '>
                     {skills.map((skill, keys) => (

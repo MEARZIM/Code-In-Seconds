@@ -4,6 +4,7 @@ import { LandingNavbar } from "@/components/LandingPage/Navbar";
 import { HeroSection } from "@/components/LandingPage/heroSection";
 import { Footer } from "@/components/LandingPage/footer";
 import CardFlip from "@/components/LandingPage/Cards/card";
+import { NewsLetter } from "@/components/LandingPage/newsLetter";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -16,6 +17,7 @@ export default function Home() {
       <LandingNavbar />
       <HeroSection />
       <CardFlip/>
+      <NewsLetter />
       <Footer />
     </main>
   );
