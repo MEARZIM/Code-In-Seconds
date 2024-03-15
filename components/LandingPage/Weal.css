@@ -1,0 +1,22 @@
+.skill-container {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  
+  @keyframes moveCyclic {
+    0% {
+      left: translateX(0);
+    }
+  
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .skill-container > div {
+    animation: moveCyclic 20s linear infinite;
+  }
+  
+  /* Add other styling as needed */
+  
