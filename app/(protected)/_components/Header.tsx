@@ -1,7 +1,5 @@
-
+"use client"
 import React, { useState } from 'react'
-import { RxCross2 } from "react-icons/rx";
-import { CiMenuBurger } from "react-icons/ci";
 
 import Logo from './logo'
 

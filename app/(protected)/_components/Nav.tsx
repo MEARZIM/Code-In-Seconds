@@ -12,7 +12,7 @@ export const Nav = () => {
     let [open, setOpen] = useState(false);
 
     return (
-        <nav className='sticky shadow-md w-full top-0 left-0'>
+        <nav className='sticky z-50 shadow-md w-full top-0 left-0 bg-current'>
             <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-7xl'>
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
