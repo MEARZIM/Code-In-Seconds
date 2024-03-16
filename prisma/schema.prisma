@@ -43,6 +43,8 @@ enum UserRole {
 model User {
   id                    String                 @id @default(auto()) @map("_id") @db.ObjectId
   name                  String?
+  // username              String?                @unique
+  bio                   String?
   email                 String?                @unique
   emailVerified         DateTime?              @map("email_verified")
   image                 String?
@@ -51,6 +53,16 @@ model User {
   role                  UserRole               @default(USER)
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+  coverImage            String?
+  profileImage          String?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
+  followingIds          String[]               @db.ObjectId
+  hasNotifications      Boolean?
+
+  post         Post[]
+  comments     Comments[]
+  notification Notification[]
 
   @@map("users")
 }
@@ -88,4 +100,53 @@ model TwoFactorConfirmation {
   user   User   @relation(fields: [userID], references: [id], onDelete: Cascade)
 
   @@unique([userID])
+}
+
+model Post {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String   @db.ObjectId
+  likedIds  String[] @db.ObjectId
+
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments     Comments[]
+  postCategory PostCategory[] // Adding the opposite relation field
+}
+
+model Categories {
+  id       String         @id @default(auto()) @map("_id") @db.ObjectId
+  category String
+  posts    PostCategory[]
+}
+
+model PostCategory {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  postId     String @db.ObjectId
+  categoryId String @db.ObjectId
+
+  post     Post       @relation(fields: [postId], references: [id])
+  category Categories @relation(fields: [categoryId], references: [id])
+}
+
+model Comments {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String   @db.ObjectId
+  postId    String   @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  body      String
+  userId    String   @db.ObjectId
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

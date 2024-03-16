@@ -9,7 +9,7 @@ import { useCurrentUser } from '@/hooks/use-current-user';
 
 import SidebarItem from './SidebarItem';
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const  currentUser  = useCurrentUser();
 
   const items = [
@@ -34,9 +34,9 @@ const Sidebar = () => {
   ]
 
   return (
-    <div className="col-span-1 h-full pr-7 py-10 ">
-        <div className="flex flex-col items-center lg:bg-sky-100/60 backdrop-blur-sm rounded-lg">
-          <div className="space-y-2 lg:w-[230px] py-6 px-2">
+    <div className="col-span-1 h-full py-2 md:px-4 md:py-10 ">
+        <div className="flex flex-col justify-center items-center lg:bg-sky-100/60 backdrop-blur-sm rounded-lg">
+          <div className="space-y-2 py-6 px-2">
             {items.map((item) => (
               <SidebarItem
                 key={item.href}
@@ -54,4 +54,3 @@ const Sidebar = () => {
   )
 };
 
-export default Sidebar;
