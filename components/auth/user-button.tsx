@@ -14,13 +14,13 @@ import { Button } from "@/components/ui/button";
 import { SignOut } from '@/actions/signout';
 import { ManageAccountModal } from "@/components/auth/modals/manageAccountModal";
 import { useManageAccountModal } from "@/hooks/useManageAccountModal";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { useCurrentUserThroughSessions } from "@/hooks/useCurrentUserThroughSessions";
 import "./userButton.css"
 
 
 
 export const UserButton = () => {
-    const user = useCurrentUser();
+    const user = useCurrentUserThroughSessions();
     // console.log(user);
 
     const isOpen = useManageAccountModal((state) => state.isOpen);
@@ -57,7 +57,7 @@ export const UserButton = () => {
             </button>
 
             {isDropdownOpen && (
-                <div className={`absolute right-2 mt-2 w-72 rounded-md shadow-lg bg-white ${isDropdownOpen ? 'slide-in' : 'slide-out'}`}>
+                <div className={`absolute  md:right-2 mt-2 w-72 rounded-md shadow-lg bg-white ${isDropdownOpen ? 'slide-in' : 'slide-out'}`}>
                     <div className="flex items-center p-4 border-b">
                         <Avatar className="mr-3">
                             <AvatarImage alt="Not Found" src={user?.image || ""} />

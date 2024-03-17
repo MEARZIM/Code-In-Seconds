@@ -4,10 +4,10 @@ import React from 'react'
 
 import { SignOut } from '@/actions/signout';
 import { Button } from '@/components/ui/button';
-import { useCurrentUser } from '@/hooks/use-current-user';
+import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions';
 
 const UserPage = () => {
-  const user = useCurrentUser();
+  // const user = useCurrentUserThroughSessions();
 
   const onClick = () => {
     SignOut();

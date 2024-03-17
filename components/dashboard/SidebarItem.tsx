@@ -2,10 +2,11 @@
 
 import React, { useCallback } from 'react';
 import { IconType } from "react-icons";
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 
 import { BsDot } from 'react-icons/bs';
+import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions';
 
 interface SidebarItemProps {
     label: string;
@@ -23,26 +24,26 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     onClick,
     alert
 }) => {
-    //   const router = useRouter();
+      const router = useRouter();
     //   const loginModal = useLoginModal();
 
-    //   const { data: currentUser } = useCurrentUser();
+      const currentUser = useCurrentUserThroughSessions();
 
-    //   const handleClick = useCallback(() => {
-    //     if (onClick) {
-    //       return onClick();
-    //     }
+      const handleClick = useCallback(() => {
+        if (onClick) {
+          return onClick();
+        }
 
-    //     if (auth && !currentUser) {
-    //       loginModal.onOpen();
-    //     } else if (href) {
-    //       router.push(href);
-    //     }
-    //   }, [router, href, auth, loginModal, onClick, currentUser]);
+        if (!currentUser) {
+          router.push("auth/signin")
+        } else if (href) {
+          router.push(href);
+        }
+      }, [router, href, auth, onClick, currentUser]);
 
     return (
         <div
-            // onClick={handleClick} 
+            onClick={handleClick} 
             className="flex flex-row items-center">
             <div className="relative rounded-full h-6 w-4 flex items-center justify-center p-4 hover:bg-slate-300 hover:bg-opacity-10 cursor-pointer md:hidden ">
                 <Icon size={20} color="white" />

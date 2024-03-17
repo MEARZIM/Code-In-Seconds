@@ -5,15 +5,17 @@ import { UserButton } from '@/components/auth/user-button';
 export const Nav = () => {
     let Links = [
         { name: "HOME", link: "/" },
-        { name: "SERVICE", link: "/" },
-        { name: "ABOUT", link: "/" },
+        { name: "COURSES", link: "/" },
+        { name: "TUTORIALS", link: "/" },
+        { name: "JOBS", link: "/" },
+        { name: "PROBLEMS", link: "/" },
         { name: "CONTACT", link: "/" },
     ];
     let [open, setOpen] = useState(false);
 
     return (
-        <nav className='sticky z-50 shadow-md w-full top-0 left-0 bg-white'>
-            <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-7xl'>
+        <nav className='sticky z-50 shadow-md w-full top-0 left-0 bg-indigo-800'>
+            <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-5xl'>
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
                     <div className=' text-blue-600' >
@@ -35,7 +37,7 @@ export const Nav = () => {
                     {
                         Links.map((link) => (
                             <li className='md:ml-8 md:my-0 my-7 font-semibold' key={link.link}>
-                                <a href={link.link} className='text-white hover:text-blue-400 duration-500'>{link.name}</a>
+                                <a href={link.link} className='text-white text-xs hover:text-blue-400 duration-500'>{link.name}</a>
                             </li>))
                     }
 

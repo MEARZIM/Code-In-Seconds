@@ -22,7 +22,7 @@ import { useManageAccountModal } from "@/hooks/useManageAccountModal"
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { Switch } from "@/components/ui/switch";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import { useCurrentUserThroughSessions } from "@/hooks/useCurrentUserThroughSessions";
 
 
 
@@ -33,8 +33,8 @@ const formSchema = z.object({
 export const ManageAccountModal = () => {
     const ManageAccountModal = useManageAccountModal();
 
-    const user = useCurrentUser();
-    console.log(user);
+    const user = useCurrentUserThroughSessions();
+    // console.log(user);
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),

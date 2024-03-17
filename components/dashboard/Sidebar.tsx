@@ -5,12 +5,12 @@ import { BiLogOut } from 'react-icons/bi';
 import { BsHouseFill, BsBellFill } from 'react-icons/bs';
 import { FaUser } from 'react-icons/fa';
 
-import { useCurrentUser } from '@/hooks/use-current-user';
+import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions';
 
 import SidebarItem from './SidebarItem';
 
 export const Sidebar = () => {
-  const  currentUser  = useCurrentUser();
+  const  currentUser  = useCurrentUserThroughSessions();
 
   const items = [
     {
