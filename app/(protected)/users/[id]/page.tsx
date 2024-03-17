@@ -1,13 +1,15 @@
 "use client"
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { DNA } from 'react-loader-spinner'
 import { InstagramLogoIcon, TwitterLogoIcon } from '@radix-ui/react-icons'
 import { FaFacebook, FaUser } from 'react-icons/fa6'
+import { MdOutlineDateRange } from "react-icons/md";
+import { format } from "date-fns";
 
 import useUser from '@/hooks/useUser'
 import { Button } from '@/components/ui/button'
-import { AvatarFallback,Avatar, AvatarImage } from '@/components/ui/avatar'
+import { AvatarFallback, Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Header } from '@/app/(protected)/_components/Header'
 
 const page = ({
@@ -20,13 +22,22 @@ const page = ({
 
   const { user, isLoading } = useUser(params.id);
 
+  console.log(user)
+  const createdAt = useMemo(() => {
+    if (!user?.user?.createdAt) {
+      return null;
+    }
+    return format(new Date(user?.user?.createdAt), 'MMMM yyyy');
+  }, [user?.user?.createdAt])
+
+
   if (isLoading) {
     return (
-      <div className='flex justify-center items-center'>
+      <div className='h-full flex justify-center items-center'>
         <DNA
           visible={true}
-          height="10"
-          width="10"
+          height="70"
+          width="70"
           ariaLabel="dna-loading"
           wrapperStyle={{}}
           wrapperClass="dna-wrapper"
@@ -39,7 +50,7 @@ const page = ({
 
   return (
     <>
-    <Header/>
+      <Header />
       <div className="bg-[#1c2331] text-white h-full">
         <div
           className="bg-cover bg-center bg-no-repeat py-20 px-4 md:px-10"
@@ -50,17 +61,21 @@ const page = ({
           <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-end">
             <div className="md:flex-1 text-center md:text-left mt-4 md:mt-0">
               <div className="md:flex-1 mb-4 flex justify-center md:justify-start">
-               
-                  <Avatar className='h-20 w-20'>
-                    <AvatarImage alt="User profile image" src={user.user.image} />
-                    <AvatarFallback >
-                      <FaUser className="text-white" size={30} />
-                    </AvatarFallback>
-                  </Avatar>
-              
+
+                <Avatar className='h-20 w-20'>
+                  <AvatarImage alt="User profile image" src={user.user.image} />
+                  <AvatarFallback >
+                    <FaUser className="text-white" size={30} />
+                  </AvatarFallback>
+                </Avatar>
+
               </div>
               <h1 className="text-4xl font-bold">{user.user.name}</h1>
               <p className="text-xl">Photographer</p>
+              <p className="pt-2 text-sm flex items-center justify-center md:justify-start gap-2 text-white/70">
+                <MdOutlineDateRange size={20}/>
+                Joined {createdAt}
+              </p>
               <div className="flex justify-center md:justify-start space-x-6 my-6">
                 <div>
                   <p className="text-2xl font-bold">{user.followersCount}</p>
@@ -94,7 +109,7 @@ const page = ({
             </p>
           </div>
         </div>
-        
+
       </div>
     </>
   )
