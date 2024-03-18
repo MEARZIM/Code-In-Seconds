@@ -6,29 +6,29 @@ import React, {
     useEffect, 
     useState 
 } from 'react'
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
+import useUser from '@/hooks/useUser';
+import ImageUpload from '../imageUpload';
+import { useParams } from 'next/navigation';
 import { Modal } from '@/components/ui/modal';
-import useEditModal from '@/hooks/useEditModal';
 import { Input } from '@/components/ui/input';
+import useEditModal from '@/hooks/useEditModal';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import ImageUpload from '../imageUpload';
-import toast from 'react-hot-toast';
-import axios from 'axios';
-import { useParams } from 'next/navigation';
-import useUser from '@/hooks/useUser';
 
 
 
 const EditModal = () => {
     const params = useParams();
-    console.log(params.id);
+    // console.log(params.id);
 
     const userData = useUser(params.id as string);
     const currentUser = userData.user.user;
 
-    console.log(currentUser);
+    // console.log(currentUser);
 
     const editModal = useEditModal();
     const [isLoading, setIsLoading] = useState(false);
@@ -40,7 +40,6 @@ const EditModal = () => {
     const [username, setUsername] = useState('');
     const [bio, setBio] = useState('');
 
-    console.log(coverImage);
     useEffect(() => {
         setProfileImage(currentUser.profileImage)
         setCoverImage(currentUser.coverImage)
@@ -55,8 +54,9 @@ const EditModal = () => {
         currentUser?.coverImage
     ]);
 
-    const onSubmit = useCallback(async () => {
+    const handleSubmit: React.FormEventHandler<HTMLFormElement>  = useCallback(async (e) => {
         try {
+            e.preventDefault()
             setIsLoading(true);
 
             await axios.patch('/api/edit', {
@@ -66,8 +66,8 @@ const EditModal = () => {
                 profileImage: profileImage,
                 coverImage: coverImage
             });
-            //   mutateFetchedUser();
-            console.log({ name, username, bio, profileImage, coverImage })
+            
+            // console.log({ name, username, bio, profileImage, coverImage })
 
             toast.success('Updated');
 
@@ -98,7 +98,7 @@ const EditModal = () => {
                     <div className="">
 
 
-                        <form onSubmit={onSubmit}>
+                        <form onSubmit={handleSubmit}>
 
                             <div className="flex flex-col gap-4">
                                 <ImageUpload
