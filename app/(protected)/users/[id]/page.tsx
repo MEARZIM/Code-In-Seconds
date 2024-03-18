@@ -11,6 +11,9 @@ import useUser from '@/hooks/useUser'
 import { Button } from '@/components/ui/button'
 import { AvatarFallback, Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Header } from '@/app/(protected)/_components/Header'
+import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions'
+import useEditModal from '@/hooks/useEditModal'
+import EditModal from '@/components/auth/modals/EditModal'
 
 const page = ({
   params
@@ -19,10 +22,12 @@ const page = ({
     id: string
   }
 }) => {
+  const isOpen = useEditModal((state)=> state.isOpen)
+  const onOpen = useEditModal((state)=> state.onOpen)
 
+  const session = useCurrentUserThroughSessions()
   const { user, isLoading } = useUser(params.id);
 
-  console.log(user)
   const createdAt = useMemo(() => {
     if (!user?.user?.createdAt) {
       return null;
@@ -30,6 +35,10 @@ const page = ({
     return format(new Date(user?.user?.createdAt), 'MMMM yyyy');
   }, [user?.user?.createdAt])
 
+
+  const handleEditModal = () =>{
+    onOpen();
+  }
 
   if (isLoading) {
     return (
@@ -47,6 +56,7 @@ const page = ({
   }
 
   console.log(user)
+  console.log(session)
 
   return (
     <>
@@ -63,7 +73,7 @@ const page = ({
               <div className="md:flex-1 mb-4 flex justify-center md:justify-start">
 
                 <Avatar className='h-20 w-20'>
-                  <AvatarImage alt="User profile image" src={user.user.image} />
+                  <AvatarImage alt="User profile image" src={user.user.profileImage ? user.user.profileImage :  user.user.image} />
                   <AvatarFallback >
                     <FaUser className="text-white" size={30} />
                   </AvatarFallback>
@@ -73,7 +83,7 @@ const page = ({
               <h1 className="text-4xl font-bold">{user.user.name}</h1>
               <p className="text-xl">Photographer</p>
               <p className="pt-2 text-sm flex items-center justify-center md:justify-start gap-2 text-white/70">
-                <MdOutlineDateRange size={20}/>
+                <MdOutlineDateRange size={20} />
                 Joined {createdAt}
               </p>
               <div className="flex justify-center md:justify-start space-x-6 my-6">
@@ -90,7 +100,16 @@ const page = ({
                   <p>Bookmarks</p>
                 </div>
               </div>
-              <Button className="mx-auto md:mx-0 mb-4 md:mb-0">Follow</Button>
+              {
+                session?.id == params.id ? (
+                  <Button
+                    className="mx-auto md:mx-0 mb-4 md:mb-0"
+                    onClick={handleEditModal}
+                  >Edit</Button>
+                ) : (
+                  <Button className="mx-auto md:mx-0 mb-4 md:mb-0">Follow</Button>
+                )
+              }
             </div>
           </div>
         </div>
@@ -111,6 +130,12 @@ const page = ({
         </div>
 
       </div>
+
+      {isOpen && (
+        <div className='flex justify-center items-center'>
+          <EditModal/>
+        </div>
+      )}
     </>
   )
 }
