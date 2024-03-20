@@ -18,7 +18,7 @@ export async function GET() {
         },
       },
     })
-    console.log(users)
+    // console.log(users)
     return NextResponse.json(users);
 
   } catch (error) {

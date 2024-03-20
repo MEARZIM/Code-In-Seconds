@@ -34,3 +34,12 @@ export const ResetNewPasswordSchema = z.object({
     })
 })
 
+
+export const CreatePostSchema = z.object({
+    category : z.string().min(2,{
+        message: "Category is required"
+    }),
+    postBody : z.string().min(1,{
+        message: "Post body is required"
+    }),
+})

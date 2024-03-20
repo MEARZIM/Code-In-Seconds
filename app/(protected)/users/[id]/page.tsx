@@ -55,8 +55,8 @@ const page = ({
     )
   }
 
-  console.log(user)
-  console.log(session)
+  // console.log(user)
+  // console.log(session)
 
   return (
     <>
