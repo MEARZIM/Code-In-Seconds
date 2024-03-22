@@ -1,6 +1,5 @@
-import fetcher from "@/lib/fetcher";
-import axios from "axios";
 import useSWR from "swr";
+import fetcher from "@/lib/fetcher";
 
 
 const useUser = (userId: string) => {

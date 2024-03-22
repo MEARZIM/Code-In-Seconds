@@ -14,6 +14,7 @@ import { Header } from '@/app/(protected)/_components/Header'
 import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions'
 import useEditModal from '@/hooks/useEditModal'
 import EditModal from '@/components/auth/modals/EditModal'
+import PostFeed from '@/components/dashboard/PostFeed/postFeed'
 
 const page = ({
   params
@@ -22,8 +23,8 @@ const page = ({
     id: string
   }
 }) => {
-  const isOpen = useEditModal((state)=> state.isOpen)
-  const onOpen = useEditModal((state)=> state.onOpen)
+  const isOpen = useEditModal((state) => state.isOpen)
+  const onOpen = useEditModal((state) => state.onOpen)
 
   const session = useCurrentUserThroughSessions()
   const { user, isLoading } = useUser(params.id);
@@ -36,7 +37,7 @@ const page = ({
   }, [user?.user?.createdAt])
 
 
-  const handleEditModal = () =>{
+  const handleEditModal = () => {
     onOpen();
   }
 
@@ -61,7 +62,7 @@ const page = ({
   return (
     <>
       <Header />
-      <div className="bg-[#1c2331] text-white h-full">
+      <div className="text-white h-full bg-[#1c2331]">
         <div
           className="bg-cover bg-center bg-no-repeat py-20 px-4 md:px-10"
           style={{
@@ -73,7 +74,7 @@ const page = ({
               <div className="md:flex-1 mb-4 flex justify-center md:justify-start">
 
                 <Avatar className='h-20 w-20'>
-                  <AvatarImage alt="User profile image" src={user.user.profileImage ? user.user.profileImage :  user.user.image} />
+                  <AvatarImage alt="User profile image" src={user.user.profileImage ? user.user.profileImage : user.user.image} />
                   <AvatarFallback >
                     <FaUser className="text-white" size={30} />
                   </AvatarFallback>
@@ -113,13 +114,16 @@ const page = ({
             </div>
           </div>
         </div>
+        <div className='flex flex-col w-full md:w-96 justify-center items-center max-w-4xl mx-auto text-black'>
+          <PostFeed userId={params.id}/>
+        </div>
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="flex justify-center space-x-4 mb-6">
             <TwitterLogoIcon className="text-white" />
             <FaFacebook className="text-white" />
             <InstagramLogoIcon className="text-white" />
           </div>
-          <div className="text-center md:text-left">
+          <div className=" w-full text-center md:text-left">
             <h2 className="text-2xl font-bold mb-4">Bio</h2>
             <p>
               An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy —
@@ -133,7 +137,7 @@ const page = ({
 
       {isOpen && (
         <div className='flex justify-center items-center'>
-          <EditModal/>
+          <EditModal />
         </div>
       )}
     </>

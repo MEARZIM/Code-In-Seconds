@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { Modal } from "@/components/ui/modal";
 import { Label } from "@/components/ui/label";
@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import RichTextEditor from "./RichTextEditor";
 import { usePostModal } from "@/hooks/usePostModal";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 
 
@@ -15,12 +17,30 @@ const PostForm = () => {
     const [category, setCategory] =useState<string>("");
     const [postContent, setPostContent] =useState<string>("");
 
+    const [isLoadings, setIsLoadings] = useState<boolean>(false)
+
     console.log(category, postContent)
    
-    const onSubmit = (data: any) => {
-        console.log(data);
-        postModal.onClose(); // Close the modal after successful submission
-    };
+    const onSubmit: React.FormEventHandler<HTMLFormElement> = useCallback( async (e) => {
+        try {
+            e.preventDefault();
+            setIsLoadings(true);
+            
+            await axios.post('/api/post',{
+                category: category,
+                postContent: postContent
+            });
+
+            toast.success("Post Created Successfully");
+            setPostContent("");
+            setCategory("");
+
+        } catch (error) {
+            toast.error("Something went wrong")
+        } finally{
+            setIsLoadings(false);
+        }
+    },[category, postContent])
 
     return (
         <Modal
@@ -44,7 +64,7 @@ const PostForm = () => {
                     />
                 
                 </div>
-                <Button type="submit">Submit</Button>
+                <Button type="submit">Post</Button>
             </form>
         </Modal>
     );

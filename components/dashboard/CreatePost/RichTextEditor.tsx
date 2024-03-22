@@ -37,6 +37,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({ value, onChange, name }
                 value={value || ''}
                 onChange={handleQuillChange}
                 modules={toolbarOptions}
+                placeholder='Write Your Content'
             />
         </div>
     );

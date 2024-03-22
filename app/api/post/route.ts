@@ -40,6 +40,7 @@ export async function GET(
                 }
             })
         }
+        // console.log(posts)
 
         return NextResponse.json(posts);
 
@@ -61,9 +62,11 @@ export async function POST(
             return new NextResponse("User Not verified", { status: 500 });
         }
 
-        const { body } = await req.json();
+        const body = await req.json();
+        console.log(body);
 
         const {
+            category,
             postContent
         } = body;
 

@@ -1,3 +1,5 @@
+"use client"
+
 import useSWR from  "swr";
 
 import fetcher from "@/lib/fetcher";
@@ -16,7 +18,7 @@ const usePosts = (userId ?: string) =>{
     console.log(error);
 
     return {
-        user: data,
+        post: data,
         isLoading,
         isError: error,
         mutate

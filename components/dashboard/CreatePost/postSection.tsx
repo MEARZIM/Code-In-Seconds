@@ -1,15 +1,21 @@
 "use client"
 
 import React from 'react'
+import { TfiWrite } from "react-icons/tfi";
 
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 import useUser from '@/hooks/useUser';
-import { DNA } from 'react-loader-spinner';
 import { UserAvatar } from '../userAvatar';
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions';
 import { usePostModal } from '@/hooks/usePostModal';
 import PostForm from './postForm';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export const PostSection = () => {
     const loginUser = useCurrentUserThroughSessions();
@@ -22,16 +28,16 @@ export const PostSection = () => {
 
     if (isLoading) {
         return (
-            <div className='flex justify-center items-center'>
-                <DNA
-                    visible={true}
-                    height="80"
-                    width="80"
-                    ariaLabel="dna-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="dna-wrapper"
-                />
+        <>
+            <div className="flex justify-center items-center space-x-4 m-2">
+                <Skeleton className="h-12 w-12 rounded-full bg-slate-200" />
+                <div className='space-y-2'>
+                    <Skeleton className="h-12 w-72 bg-slate-200" />
+                </div>
+                <Skeleton className="h-12 w-12 rounded-xl bg-slate-200" />
+              
             </div>
+        </>
         )
     }
 
@@ -46,8 +52,24 @@ export const PostSection = () => {
                     placeholder="Start a post"
                     type="text"
                     onClick={onOpen}
-                />
 
+                />
+                <div className='flex justify-center items-center relative bottom-1.5 px-2'>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <TfiWrite
+                                    size={25}
+                                    className=' text-gray-400 cursor-pointer hover:text-gray-500 transition'
+                                    onClick={onOpen}
+                                />
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Create a Post</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </div>
             </div>
             {isOpen && (
 
