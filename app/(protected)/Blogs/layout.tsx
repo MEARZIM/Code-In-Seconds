@@ -23,7 +23,7 @@ const DashboardLayout = async ({
               <div className='col-span-3 lg:col-span-2 border-x-[1px] border-white' >
                 {children}
               </div>
-              <FollowBar />
+              {/* <FollowBar /> */}
             </div>
           </div>
         </div>
