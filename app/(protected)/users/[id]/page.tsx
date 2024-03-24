@@ -10,11 +10,12 @@ import { format } from "date-fns";
 import useUser from '@/hooks/useUser'
 import { Button } from '@/components/ui/button'
 import { AvatarFallback, Avatar, AvatarImage } from '@/components/ui/avatar'
-import { Header } from '@/app/(protected)/_components/Header'
+
 import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions'
 import useEditModal from '@/hooks/useEditModal'
 import EditModal from '@/components/auth/modals/EditModal'
 import PostFeed from '@/components/dashboard/PostFeed/postFeed'
+import { BlogPageNavBar } from '@/components/Blogs/Navbar/Navbar'
 
 const page = ({
   params
@@ -61,7 +62,7 @@ const page = ({
 
   return (
     <>
-      <Header />
+      <BlogPageNavBar />
       <div className="text-white h-full bg-[#1c2331]">
         <div
           className="bg-cover bg-center bg-no-repeat py-20 px-4 md:px-10"

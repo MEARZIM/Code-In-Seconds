@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { AuthProvider } from '@/providers/auth-provider'
 
 const layout = ({
   children
@@ -9,9 +8,9 @@ const layout = ({
 }) => {
   return (
     <>
-      <AuthProvider>
-        {children}
-      </AuthProvider>
+
+      {children}
+
     </>
   )
 }

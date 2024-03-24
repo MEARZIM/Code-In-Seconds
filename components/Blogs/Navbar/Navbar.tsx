@@ -1,8 +1,10 @@
+"use client"
+
 import React, { useState } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { UserButton } from '@/components/auth/user-button';
 
-export const Nav = () => {
+export const BlogPageNavBar = () => {
     let Links = [
         { name: "HOME", link: "/" },
         { name: "COURSES", link: "/" },
