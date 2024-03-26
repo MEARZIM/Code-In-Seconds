@@ -1,6 +1,6 @@
 import Menu from "@/components/Blogs/Menu/Menu"
 import Featured from "@/components/Blogs/Featured/Featured"
-import CategoryList from "@/components/Blogs/CategoryList/CategoryList"
+import { CategoryList } from "@/components/Blogs/CategoryList/CategoryList"
 import { BlogCardList } from "@/components/Blogs/BlogCardList/BlogCardList"
 
 interface props {
@@ -14,7 +14,7 @@ export default function DashboardPage({ searchParams }: any) {
       {/* <PostForm/> */}
       <div className="bg-white text-black">
         <Featured />
-        {/* <CategoryList /> */}
+        <CategoryList />
         <div className="flex flex-col md:flex-row gap-[50px]">
           <BlogCardList page={page} cat={""} />
           <Menu />
