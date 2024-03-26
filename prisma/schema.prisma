@@ -18,7 +18,7 @@ model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
   type              String
-  provider          String  
+  provider          String
   providerAccountId String  @map("provider_account_id")
   refresh_token     String? @db.String
   access_token      String? @db.String
@@ -61,7 +61,7 @@ model User {
   hasNotifications      Boolean?
 
   post         Post[]
-  comments     Comments[]
+  comments     Comment[]
   notification Notification[]
 
   @@map("users")
@@ -102,44 +102,48 @@ model TwoFactorConfirmation {
   @@unique([userID])
 }
 
+model Category {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  slug  String  @unique
+  title String
+  img   String?
+  Posts Post[]
+}
+
 model Post {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  body      String
+  id        String    @id @default(cuid()) @map("_id")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  slug      String    @unique
+  title     String
+  desc      String
+  img       String?
+  views     Int       @default(0)
+  catSlug   String
+  cat       Category  @relation(fields: [catSlug], references: [slug])
+  userEmail String
+  user      User      @relation(fields: [userEmail], references: [email])
+  comments  Comment[]
+  // postCategory PostCategory[] // Adding the opposite relation field
+}
+
+// model PostCategory {
+//   id         String @id @default(auto()) @map("_id") @db.ObjectId
+//   postId     String @db.ObjectId
+//   categoryId String @db.ObjectId
+
+//   post     Post       @relation(fields: [postId], references: [id])
+//   category Categories @relation(fields: [categoryId], references: [id])
+// }
+
+model Comment {
+  id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  userId    String   @db.ObjectId
-  likedIds  String[] @db.ObjectId
-
-  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-  comments     Comments[]
-  postCategory PostCategory[] // Adding the opposite relation field
-}
-
-model Categories {
-  id       String         @id @default(auto()) @map("_id") @db.ObjectId
-  category String
-  posts    PostCategory[]
-}
-
-model PostCategory {
-  id         String @id @default(auto()) @map("_id") @db.ObjectId
-  postId     String @db.ObjectId
-  categoryId String @db.ObjectId
-
-  post     Post       @relation(fields: [postId], references: [id])
-  category Categories @relation(fields: [categoryId], references: [id])
-}
-
-model Comments {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  body      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  userId    String   @db.ObjectId
-  postId    String   @db.ObjectId
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  desc      String
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
 }
 
 model Notification {
