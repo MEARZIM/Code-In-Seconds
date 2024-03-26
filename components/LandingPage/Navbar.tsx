@@ -19,7 +19,7 @@ export const LandingNavbar = () => {
                     <img alt="Logo" src="https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1710429570~exp=1710430170~hmac=ef9fc14d93c1d985396b1ae06cc0c6140ef0208225fe2a351386e6bd79808f71" />
 
                 </div>
-                <h1 className={cn("text-lg md:text-2xl font-bold text-white", font.className)}>
+                <h1 className={cn("text-lg md:text-2xl text-sky-400 font-bold", font.className)}>
                     Code In Seconds
                 </h1>
             </Link>

@@ -5,7 +5,7 @@ const Featured = () => {
   return (
     <div className="mt-10">
       <h1 className="text-6xl font-light mb-8">
-        <b>Hey, lama dev here!</b> Discover my stories and creative ideas.
+        <b>Hey, Ayan dev here!</b> Discover my stories and creative ideas.
       </h1>
       <div className="flex flex-col lg:flex-row items-center lg:gap-16">
         <div className="lg:flex-1 lg:h-96 relative">
