@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="lg:flex lg:flex-col lg:gap-14">
         <div className="flex items-center gap-4">
           <Image src="/logo.png" alt="blog" width={50} height={50} />
-          <h1 className="text-2xl font-bold">Lamablog</h1>
+          <h1 className="text-2xl font-bold">Code in Seconds</h1>
         </div>
         <p className="font-light">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim

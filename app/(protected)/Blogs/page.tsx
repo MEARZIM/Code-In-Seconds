@@ -9,6 +9,7 @@ interface props {
 
 export default function DashboardPage({ searchParams }: any) {
   const page = parseInt(searchParams.page) || 1;
+  console.log(searchParams.page);
   return (
     <>
       {/* <PostForm/> */}
