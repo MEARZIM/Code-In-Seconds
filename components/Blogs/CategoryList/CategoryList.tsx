@@ -19,7 +19,7 @@ export const CategoryList = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/categories");
+        const res = await axios.get("/api/categories");
         setCategory(res.data);
 
       } catch (err) {

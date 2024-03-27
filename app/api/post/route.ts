@@ -2,11 +2,18 @@ import { auth } from "@/auth"
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+const POST_PER_PAGE = 2;
+
 //Geting all the Post
 export async function GET(
     req: Request
 ) {
     const userId =  req.url.split('?')[1];
+
+    const { searchParams } = new URL(req.url);
+
+    const  page = searchParams.get('page');
+
     try {
 
         const verfiedUser = await auth();
@@ -31,6 +38,8 @@ export async function GET(
             })
         } else {
             posts = await db.post.findMany({
+                take: POST_PER_PAGE,
+                skip: POST_PER_PAGE * (Number(page) - 1) ,
                 include: {
                     user: true,
                     comments: true,
@@ -63,21 +72,26 @@ export async function POST(
         }
 
         const body = await req.json();
-        console.log(body);
+        // console.log(body);
 
         const {
-            category,
-            postContent
+           title,
+           blog,
+           catSlug,
+           img
         } = body;
 
         const post = await db.post.create({
             data: {
-                body: postContent,
+                title: title,
+                slug: title,
+                catSlug: catSlug,
+                desc: blog,
                 userId: verfiedUser.user?.id as string
             }
         });
 
-        console.log(post);
+        // console.log(post);
 
         return NextResponse.json(post);
 

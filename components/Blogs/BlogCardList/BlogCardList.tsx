@@ -1,9 +1,11 @@
-
-import React from "react";
+"use client"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Link from "next/link";
 import Image from "next/image";
+
 import Pagination from "../Pagination/Pagination";
 import { BlogCard } from "../BlogCard/BlogCard";
-import Link from "next/link";
 
 
 interface BlogCardListProps {
@@ -11,31 +13,33 @@ interface BlogCardListProps {
   cat: string;
 }
 
-const getData = async (page: number, cat: string) => {
-  const res = await fetch(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
-    {
-      cache: "no-store",
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed");
-  }
-
-  return res.json();
-};
 
 
 
 
-export const BlogCardList = async ({ page, cat }: BlogCardListProps) => {
+
+export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
+  const [post, setPost] = useState();
   // const { posts, count } = await getData(page, cat);
 
   const POST_PER_PAGE = 2;
 
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   // const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await axios.get(
+        `/api/posts?page=${page}&cat=${cat || ""}`,
+      );
+      return res.data;
+    };
+
+    getData();
+  }, [])
+
+
+
 
   return (
     <div className="flex-5">
