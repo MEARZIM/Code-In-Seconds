@@ -121,8 +121,8 @@ model Post {
   views     Int       @default(0)
   catSlug   String
   cat       Category  @relation(fields: [catSlug], references: [slug])
-  userEmail String
-  user      User      @relation(fields: [userEmail], references: [email])
+  userId    String    @db.ObjectId
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   comments  Comment[]
   // postCategory PostCategory[] // Adding the opposite relation field
 }
@@ -140,8 +140,8 @@ model Comment {
   id        String   @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
   desc      String
-  userEmail String
-  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  userId    String    @db.ObjectId
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   postSlug  String
   post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
 }
