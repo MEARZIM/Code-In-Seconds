@@ -5,11 +5,13 @@ import { BlogCardList } from "@/components/Blogs/BlogCardList/BlogCardList"
 
 interface props {
   page: number
+  cat: string
 }
 
 export default function DashboardPage({ searchParams }: any) {
   const page = parseInt(searchParams.page) || 1;
-  console.log(searchParams.page);
+  const { cat } = searchParams;
+  console.log(cat);
   return (
     <>
       {/* <PostForm/> */}
@@ -17,7 +19,7 @@ export default function DashboardPage({ searchParams }: any) {
         <Featured />
         <CategoryList />
         <div className="flex flex-col md:flex-row gap-[50px]">
-          <BlogCardList page={page} cat={""} />
+          <BlogCardList page={page} cat={cat} />
           <Menu />
         </div>
 

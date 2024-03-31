@@ -11,11 +11,12 @@ export async function GET(
     // const userId = req.url.split('?')[1];
 
     const { searchParams } = new URL(req.url);
+    console.log({searchParams})
 
     const userId = searchParams.get('userId');
     const page = searchParams.get('page');
-    const cat = searchParams.get("cat");
-    console.log(page);
+    const cat = searchParams.get('cat');
+    console.log(cat);
 
     try {
 

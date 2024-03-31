@@ -64,7 +64,10 @@ export const BlogCard = ({ key, item }: BlogCard) => {
           <div className="flex items-center">
             <div className="text-sm">
               <p className="text-gray-900 leading-none">{createdAt}</p>
-              <Link className="text-blue-500 hover:text-red-400 hover:underline" href="#">
+              <Link 
+                className="text-blue-500 hover:text-red-400 hover:underline" 
+                href={`Blogs/${item?.id}`}
+              >
                 Read More
               </Link>
             </div>

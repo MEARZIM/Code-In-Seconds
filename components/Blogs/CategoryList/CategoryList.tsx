@@ -47,7 +47,7 @@ export const CategoryList = () => {
       <div className="flex flex-wrap gap-4">
         {Category?.map((item: any) => (
           <Link
-            href="/blog"
+            href={`/Blogs?cat=${item.title}`}
             className={`flex items-center gap-2 p-2 rounded-lg text-black text-base ${item.slug}`}
             key={item._id}
           >
