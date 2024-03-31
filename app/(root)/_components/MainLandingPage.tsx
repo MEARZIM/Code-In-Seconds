@@ -10,6 +10,8 @@ import { CardFlip } from "@/components/LandingPage/Cards/card";
 import { NewsLetter } from "@/components/LandingPage/newsLetter";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { Weal } from "@/components/LandingPage/skillWeal";
+import { StickyScrollSection } from "@/components/LandingPage/stickyScrollSection";
+import { DynamicTabs } from "@/components/LandingPage/DynamicTabs";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -40,14 +42,20 @@ export function LandingPage() {
 
     </main>
 
-    <section className="max-w-7xl mx-auto">
+    <section className="max-w-7xl mx-auto ">
       <Weal />
+      <StickyScrollSection />
+      <DynamicTabs />
       <CardFlip />
-      <NewsLetter />
     </section>
 
+    
+
+    
+
     <footer className="max-w-7xl mx-auto">
-    <Footer />
+      <NewsLetter />
+      <Footer />
     </footer>
   </>
   );

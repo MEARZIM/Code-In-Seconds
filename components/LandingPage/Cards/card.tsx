@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
-
-
 import Image from "next/image";
+
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export function CardFlip() {
   return (
-    <div className="flex flex-col justify-center my-4 md:flex-row md:justify-between bg-white">
-      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900" animate>
+    <div className="flex flex-col gap-12 justify-center mx-auto my-4 w-[20rem] md:w-fit md:flex-row md:justify-between bg-white">
+      <BackgroundGradient className="rounded-[22px] max-w-xs p-4 md:p-10 bg-white dark:bg-zinc-900" animate>
         <Image
           src={`/coding.png`}
           alt="jordans"
@@ -27,7 +26,7 @@ export function CardFlip() {
         </p>
        
       </BackgroundGradient>
-      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <BackgroundGradient className="rounded-[22px] max-w-xs p-4 sm:p-10 bg-white dark:bg-zinc-900">
         <Image
           src={`/coding.png`}
           alt="jordans"
@@ -46,7 +45,7 @@ export function CardFlip() {
         </p>
         
       </BackgroundGradient>
-      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <BackgroundGradient className="rounded-[22px] max-w-xs p-4 sm:p-10 bg-white dark:bg-zinc-900">
         <Image
           src={`/coding.png`}
           alt="jordans"
