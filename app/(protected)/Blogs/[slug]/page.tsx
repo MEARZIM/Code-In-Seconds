@@ -16,8 +16,8 @@ interface UserProps {
   password: string,
   role: string,
   isTwoFactorEnabled: false,
-  coverImage: null,
-  profileImage: null,
+  coverImage: string,
+  profileImage: string,
   createdAt: string,
   updatedAt: string,
   followingIds: [],
@@ -95,7 +95,7 @@ const page = ({
           </div>
         </div>
         <div className='m-2'>
-          <SlugHeader />
+          <SlugHeader user = {blogContent.user} views = {blogContent.views}/>
         </div>
         <div className="max-w-7xl mx-auto px-4 py-8 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:space-x-8">
