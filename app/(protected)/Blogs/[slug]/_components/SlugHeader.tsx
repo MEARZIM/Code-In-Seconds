@@ -10,7 +10,14 @@ import {
     TwitterShareButton,
     WhatsappShareButton,
 } from "react-share";
-import { FaEye, FaFacebook, FaLinkedin, FaShareFromSquare, FaXTwitter } from 'react-icons/fa6'
+import { 
+    FaEye, 
+    FaFacebook, 
+    FaLinkedin, 
+    FaShareFromSquare, 
+    FaXTwitter 
+} from 'react-icons/fa6'
+import { AiOutlineLike, AiFillLike} from "react-icons/ai";
 
 interface UserProps {
     user: {
@@ -34,7 +41,7 @@ interface UserProps {
 }
 
 const SlugHeader = (user: UserProps) => {
-    console.log(user)
+    // console.log(user)
     return (
         <div>
             <div className="max-w-4xl mx-auto p-4 border-y-2">
@@ -53,13 +60,10 @@ const SlugHeader = (user: UserProps) => {
                     </div>
                     <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
-                            <HandIcon className="h-5 w-5 text-gray-500" />
+                            <AiOutlineLike className="h-5 w-5 text-gray-500" />
                             <span className="text-sm">6.7K</span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                            <FaceIcon color='black' className="h-5 w-5 text-gray-500" />
-                            <span className="text-sm">105</span>
-                        </div>
+                      
                         <div className='flex'>
                             <FacebookShareButton
                                 url='codeInSecond.com'
