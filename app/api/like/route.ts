@@ -15,9 +15,9 @@ export async function POST(
         }
 
         const body = await req.json();
-        
-        const { postId } = body.data;
-       
+
+        const { postId, userId } = body.data;
+        console.log("userid:", userId);
 
         if (!postId) {
             return new NextResponse("Invalid Id", { status: 400 });
@@ -38,12 +38,15 @@ export async function POST(
 
         updatetedLikeIDs.push(verifiedUSer.user.id as string);
 
+        const len = updatetedLikeIDs.length;
+
         const updatedPost = await db.post.update({
             where: {
                 id: postId
             },
             data: {
-                likedIds: updatetedLikeIDs
+                likedIds: updatetedLikeIDs,
+                likesCount: len | 0
             }
         })
         return NextResponse.json(updatedPost, { status: 200 });
@@ -65,11 +68,11 @@ export async function DELETE(
             return new NextResponse("User Not Verified", { status: 400 });
         }
 
-      
+
         const body = await req.json();
-       
-        const { postId } = body;
-        
+
+        const { postId, userId } = body;
+
 
         const post = await db.post.findUnique({
             where: {
@@ -84,19 +87,21 @@ export async function DELETE(
         let updatetedLikeIDs = [...(post.likedIds || [])];
 
         updatetedLikeIDs = updatetedLikeIDs.
-            filter((likeId) => likeId !== verifiedUSer.user.id)
+            filter((likeId) => likeId !== userId)
 
-            console.log(updatetedLikeIDs)
+        const len = updatetedLikeIDs.length;
+
         const updatedPost = await db.post.update({
             where: {
                 id: postId
             },
             data: {
-                likedIds: updatetedLikeIDs
+                likedIds: updatetedLikeIDs,
+                likesCount: len | 0
             }
         })
         return NextResponse.json(updatedPost, { status: 200 });
-       
+
     } catch (error) {
         console.log(error);
         return new NextResponse("Internal Server Error", { status: 500 });

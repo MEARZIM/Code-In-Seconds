@@ -10,6 +10,7 @@ import {
     FaEye,
     FaFacebook,
     FaLinkedin,
+    FaUser,
     FaXTwitter
 } from 'react-icons/fa6'
 import {
@@ -57,6 +58,7 @@ interface UserProps {
     views: number,
     likedIds: string[],
     postId: string,
+    likesCount: number
 }
 
 const SlugHeader = (user: UserProps) => {
@@ -64,7 +66,7 @@ const SlugHeader = (user: UserProps) => {
     const {
         hasLiked,
         toggleLike
-    } = useLike({ postId: user.postId });
+    } = useLike({ postId: user.postId, userId: user.user.id });
 
 
     const onLike = useCallback(() => {
@@ -85,7 +87,9 @@ const SlugHeader = (user: UserProps) => {
                             <AvatarImage alt="Medium Staff" src={
                                 user.user.profileImage ? user.user.profileImage : user.user.image
                             } />
-                            <AvatarFallback>PI</AvatarFallback>
+                            <AvatarFallback>
+                                <FaUser />
+                            </AvatarFallback>
                         </Avatar>
                         <div className="flex flex-col">
                             <span className="text-sm font-semibold">{user.user.name}</span>
@@ -109,7 +113,7 @@ const SlugHeader = (user: UserProps) => {
                             </Button>
 
 
-                            <span className="text-sm">{(user.likedIds.length) || `0`}</span>
+                            <span className="text-sm">{user.likesCount}</span>
                         </div>
 
                         <div className='flex'>

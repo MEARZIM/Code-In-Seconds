@@ -37,7 +37,8 @@ interface BlogContentProps {
   catSlug: string,
   userId: string,
   user: UserProps,
-  likedIds: []
+  likedIds: [],
+  likesCount: number
 }
 
 
@@ -95,6 +96,7 @@ const page = ({
             views={blogContent.views}
             likedIds={blogContent.likedIds}
             postId={params.slug}
+            likesCount={blogContent.likesCount}
           />
         </div>
         <div className="max-w-7xl mx-auto px-4 py-8 lg:px-8">
