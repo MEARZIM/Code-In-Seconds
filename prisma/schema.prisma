@@ -111,20 +111,21 @@ model Category {
 }
 
 model Post {
-  id        String    @id @default(cuid()) @map("_id")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  slug      String    @unique
-  title     String
-  desc      String
-  img       String?
-  views     Int       @default(0)
-  catSlug   String
-  cat       Category  @relation(fields: [catSlug], references: [slug])
-  userId    String    @db.ObjectId
-  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  likedIds  String[]  @db.ObjectId
-  comments  Comment[]
+  id         String    @id @default(cuid()) @map("_id")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  slug       String    @unique
+  title      String
+  desc       String
+  img        String?
+  views      Int       @default(0)
+  catSlug    String
+  cat        Category  @relation(fields: [catSlug], references: [slug])
+  userId     String    @db.ObjectId
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  likedIds   String[]  @db.ObjectId
+  likesCount Int       @default(0)
+  comments   Comment[]
   // postCategory PostCategory[] // Adding the opposite relation field
 }
 
