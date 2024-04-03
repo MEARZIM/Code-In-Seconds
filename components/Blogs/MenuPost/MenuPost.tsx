@@ -1,11 +1,12 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+
 
 import { Button } from "@/components/ui/button";
 import useGetMostPopoularPosts from "@/hooks/useGetMostPopoularPosts";
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface MenuPostProps {
   withImage: boolean;
@@ -23,9 +24,13 @@ const MenuPosts = ({ withImage }: MenuPostProps) => {
 
   if (isLoading) {
     return (
-      <div>
-        Loading...
+      <div className="flex items-center space-x-4">
+      <Skeleton className="h-12 w-12 rounded-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-[250px]" />
+        <Skeleton className="h-4 w-[200px]" />
       </div>
+    </div>
     )
   }
 

@@ -1,11 +1,12 @@
 "use client"
 
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
 import Menu from '@/components/Blogs/Menu/Menu'
 import SlugHeader from './_components/SlugHeader'
-import axios from 'axios'
 import { Comments } from '@/components/Blogs/comments/Comments'
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface UserProps {
   id: string,
@@ -68,9 +69,29 @@ const page = ({
 
   if (!blogContent) {
     return (
-      <div>
-        loading...
-      </div>
+      <section className='flex flex-col mx-auto gap-4 my-5'>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+      </section>
     )
   }
   // console.log(blogContent)

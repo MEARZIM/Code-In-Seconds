@@ -7,7 +7,9 @@ import React, {
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 
@@ -34,9 +36,16 @@ export const CategoryList = () => {
 
   if (Category.length == 0) {
     return (
-      <div>
-        loading...
-      </div>
+      <section className='flex flex-col mx-auto gap-4 my-5'>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-12 w-[90%] " />
+          <Skeleton className="h-12 w-[90%] " />
+          <Skeleton className="h-12 w-[90%] " />
+          <Skeleton className="h-12 w-[90%] " />
+          <Skeleton className="h-12 w-[90%] " />
+          <Skeleton className="h-12 w-[90%] " />
+        </div>
+      </section>
     )
   }
 

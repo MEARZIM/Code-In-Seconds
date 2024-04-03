@@ -7,6 +7,7 @@ import Image from "next/image";
 import Pagination from "../Pagination/Pagination";
 import { BlogCard } from "../BlogCard/BlogCard";
 import toast from "react-hot-toast";
+import { Skeleton } from "@/components/ui/skeleton";
 
 
 interface BlogCardListProps {
@@ -21,8 +22,8 @@ interface BlogCardListProps {
 
 export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
   const [post, setPost] = useState([]);
-  const [postCount, setPostCount] =useState<number>(0);
-  const [loading, setLoading]= useState(false);
+  const [postCount, setPostCount] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
   // const { posts, count } = await getData(page, cat);
 
   const POST_PER_PAGE = 5;
@@ -33,17 +34,17 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
   useEffect(() => {
     const getData = async () => {
 
-      try{
+      try {
         setLoading(true);
 
         const res = await axios.get(
           `/api/post?page=${page}&cat=${cat || ""}`
         );
-        
+
         setPostCount(res.data.count);
         setPost(res.data.purifiedPosts);
 
-      }catch (err) {
+      } catch (err) {
         console.error(err);
         toast.error("Something went wrong")
       } finally {
@@ -57,9 +58,29 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
   // console.log(post)
   if (loading) {
     return (
-      <div>
-        loading...
-      </div>
+      <section className='flex flex-col mx-auto gap-4 my-5'>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+        <div className="flex flex-col space-y-3">
+          <Skeleton className="h-[125px] w-[100%] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[100%]" />
+            <Skeleton className="h-4 w-[100%]" />
+          </div>
+        </div>
+      </section>
     )
   }
 
@@ -71,9 +92,9 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
         {post?.map((item: any) => (
           <BlogCard item={item} key={item._id} />
         ))}
-       
+
       </div>
-      <Pagination page={page} hasNext={hasNext}  hasPrev={hasPrev}  />
+      <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev} />
     </div>
   );
 };
