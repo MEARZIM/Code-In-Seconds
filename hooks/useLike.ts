@@ -8,9 +8,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 import usePost from "./usePost";
+import { useCurrentUserThroughSessions } from "./useCurrentUserThroughSessions";
 
 
 const useLike = ({ postId, userId }: { postId: string, userId?: string }) => {
+    const currentUser = useCurrentUserThroughSessions()
+
     const {
         post,
         mutate
@@ -18,9 +21,15 @@ const useLike = ({ postId, userId }: { postId: string, userId?: string }) => {
 
     const hasLiked = useMemo(() => {
         const list = post?.likedIds || [];
-        return list.includes(post?.user?.id);
+        return list.includes(currentUser?.id);
 
-    }, [post?.user?.id, post?.likedIds, post]);
+    }, [
+        currentUser?.id,
+        post?.likedIds,
+        post,
+        currentUser
+    ]);
+    console.log(hasLiked)
 
     const toggleLike = useCallback(async () => {
 
@@ -29,7 +38,8 @@ const useLike = ({ postId, userId }: { postId: string, userId?: string }) => {
             if (hasLiked) {
                 request = () => axios.delete('/api/like', {
                     data: {
-                        postId
+                        postId,
+                        userId
                     }
                 })
                 await request();
@@ -37,7 +47,8 @@ const useLike = ({ postId, userId }: { postId: string, userId?: string }) => {
             } else {
                 request = () => axios.post('/api/like', {
                     data: {
-                        postId
+                        postId,
+                        userId
                     }
                 })
                 await request();
