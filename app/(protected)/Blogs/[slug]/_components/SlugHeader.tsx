@@ -1,7 +1,17 @@
-import React from 'react'
+"use client"
 
-import { AvatarImage, AvatarFallback, Avatar } from "@/components/ui/avatar"
-import { BookmarkIcon, FaceIcon, HandIcon } from '@radix-ui/react-icons'
+
+import React, {
+    startTransition,
+    useCallback,
+    useState
+} from 'react'
+import {
+    FaEye,
+    FaFacebook,
+    FaLinkedin,
+    FaXTwitter
+} from 'react-icons/fa6'
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -10,14 +20,21 @@ import {
     TwitterShareButton,
     WhatsappShareButton,
 } from "react-share";
-import { 
-    FaEye, 
-    FaFacebook, 
-    FaLinkedin, 
-    FaShareFromSquare, 
-    FaXTwitter 
-} from 'react-icons/fa6'
-import { AiOutlineLike, AiFillLike} from "react-icons/ai";
+import {
+    AiOutlineLike,
+    AiFillLike,
+    AiFillHeart,
+    AiOutlineHeart
+} from "react-icons/ai";
+
+import {
+    AvatarImage,
+    AvatarFallback,
+    Avatar
+} from "@/components/ui/avatar"
+
+import useLike from '@/hooks/useLike';
+import { Button } from '@/components/ui/button';
 
 interface UserProps {
     user: {
@@ -37,11 +54,28 @@ interface UserProps {
         followingIds: [],
         hasNotifications: boolean
     },
-    views: number
+    views: number,
+    likedIds: string[],
+    postId: string,
 }
 
 const SlugHeader = (user: UserProps) => {
-    // console.log(user)
+    const [isLoading, setIsLoading] = useState(false);
+    const {
+        hasLiked,
+        toggleLike
+    } = useLike({ postId: user.postId });
+
+
+    const onLike = useCallback(() => {
+        startTransition(() => {
+            setIsLoading(true)
+            toggleLike();
+            setIsLoading(false)
+        })
+    }, [toggleLike])
+
+    const LikeIcon = hasLiked ? AiFillHeart : AiOutlineHeart;
     return (
         <div>
             <div className="max-w-4xl mx-auto p-4 border-y-2">
@@ -60,16 +94,30 @@ const SlugHeader = (user: UserProps) => {
                     </div>
                     <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
-                            <AiOutlineLike className="h-5 w-5 text-gray-500" />
-                            <span className="text-sm">6.7K</span>
+                            <Button
+                                size="icon"
+                                variant="link"
+                                onClick={onLike}
+                                disabled={isLoading}
+                            >
+                                <LikeIcon
+                                    className="h-5 w-5 text-gray-500 "
+                                    color='red'
+                                    size={20}
+
+                                />
+                            </Button>
+
+
+                            <span className="text-sm">{(user.likedIds.length) || `0`}</span>
                         </div>
-                      
+
                         <div className='flex'>
                             <FacebookShareButton
                                 url='codeInSecond.com'
                                 title='Shareing this Blog from CodeInSecond'
                                 hashtag='#coding'
-                                
+
                             >
                                 <FaFacebook color='blue' className="h-5 w-5 text-gray-500" />
                             </FacebookShareButton>
@@ -87,7 +135,7 @@ const SlugHeader = (user: UserProps) => {
                             <LinkedinShareButton
                                 url='codeInSecond.com'
                                 title='Shareing this Blog from CodeInSecond'
-                                summary= 'This is the description'
+                                summary='This is the description'
                             >
                                 <FaLinkedin color='blue' className="h-5 w-5 text-gray-500" />
                             </LinkedinShareButton>

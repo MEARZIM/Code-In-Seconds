@@ -11,13 +11,13 @@ export async function GET(
     // const userId = req.url.split('?')[1];
 
     const { searchParams } = new URL(req.url);
-    console.log({searchParams})
 
     const userId = searchParams.get('userId');
+    const postId = searchParams.get('postId');
     const page = searchParams.get('page');
     const cat = searchParams.get('cat');
-    console.log(cat);
-
+   
+    console.log(postId)
     try {
 
         const verfiedUser = await auth();
@@ -44,7 +44,20 @@ export async function GET(
                     createdAt: 'desc'
                 }
             })
-        } else {
+        }  else if (postId) {
+            posts = await db.post.findUnique({
+                where: {
+                    id: postId,
+                },
+                include: {
+                    user: true,
+                    comments: true,
+                }
+            })
+            
+            return NextResponse.json(posts, {status: 200})
+        }
+        else {
             const query = {
                 take: POST_PER_PAGE,
                 skip: POST_PER_PAGE * (Number(page) - 1),

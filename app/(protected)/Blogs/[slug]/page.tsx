@@ -36,8 +36,8 @@ interface BlogContentProps {
   views: number
   catSlug: string,
   userId: string,
-  user: UserProps
-
+  user: UserProps,
+  likedIds: []
 }
 
 
@@ -49,6 +49,7 @@ const page = ({
   }
 }) => {
   const [blogContent, setBlogContent] = useState<BlogContentProps>();
+  console.log(blogContent)
 
   useEffect(() => {
     const getData = async (slug: string) => {
@@ -85,11 +86,16 @@ const page = ({
                 dangerouslySetInnerHTML={{ __html: blogContent.title }}
               />
             </div>
-           
+
           </div>
         </div>
         <div className='m-2'>
-          <SlugHeader user={blogContent.user} views={blogContent.views} />
+          <SlugHeader
+            user={blogContent.user}
+            views={blogContent.views}
+            likedIds={blogContent.likedIds}
+            postId={params.slug}
+          />
         </div>
         <div className="max-w-7xl mx-auto px-4 py-8 lg:px-8">
           <div className="flex flex-col lg:flex-row lg:space-x-8">
@@ -99,7 +105,7 @@ const page = ({
               <section>
                 <p dangerouslySetInnerHTML={{ __html: blogContent.desc }} />
               </section>
-              <Comments postId={blogContent.id}/>
+              <Comments postId={blogContent.id} />
             </div>
             <aside className="w-full lg:w-56 flex-shrink-0 mt-8 lg:mt-0">
               <div className="sticky top-12 p-6 rounded-lg">
