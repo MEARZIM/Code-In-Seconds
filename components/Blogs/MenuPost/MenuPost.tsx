@@ -20,7 +20,7 @@ const MenuPosts = ({ withImage }: MenuPostProps) => {
     isLoading
   } = useGetMostPopoularPosts();
 
-  console.log(data);
+  // console.log(data);
 
   if (isLoading) {
     return (
@@ -42,8 +42,8 @@ const MenuPosts = ({ withImage }: MenuPostProps) => {
             <Image src="/p1.jpeg" alt="" layout="fill" className="rounded-full object-cover" />
           </div>
         )} */}
-        {data.map((items: any) => (
-          <div className="flex-1 flex flex-col">
+        {data.map((items: any, index: number) => (
+          <div className="flex-1 flex flex-col" key={index}>
             <Button size="icon" className="px-8 rounded-lg bg-red-500 hover:bg-red-600 text-white text-xs">{items.catSlug}</Button>
             <h3
               className="text-sm pt-2 font-semibold text-gray-800"

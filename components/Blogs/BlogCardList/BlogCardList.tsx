@@ -89,8 +89,10 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
     <div className="flex-5">
       <h1 className="my-8 text-3xl font-semibold">Recent Posts</h1>
       <div className="gap-6">
-        {post?.map((item: any) => (
-          <BlogCard item={item} key={item._id} />
+        {post?.map((item: any, index) => (
+          <div key={index}>
+            <BlogCard item={item} />
+          </div>
         ))}
 
       </div>

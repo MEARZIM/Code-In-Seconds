@@ -12,6 +12,9 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
 
+const colorCodes = [
+  "#57c4ff31", "#da85c731", "#7fb88133", "#ff795736", "#ffb04f45", "#5e4fff31"
+]
 
 export const CategoryList = () => {
   const [Category, setCategory] = useState([]);
@@ -54,11 +57,11 @@ export const CategoryList = () => {
     <div>
       <h1 className="my-8 text-3xl font-semibold">Popular Categories</h1>
       <div className="flex flex-wrap gap-4">
-        {Category?.map((item: any) => (
+        {Category?.map((item: any, index) => (
           <Link
             href={`/Blogs?cat=${item.title}`}
             className={`flex items-center gap-2 p-2 rounded-lg text-black text-base ${item.slug}`}
-            key={item._id}
+            key={index}
           >
             {item.img && (
               <div className="w-8 h-8">
@@ -71,7 +74,11 @@ export const CategoryList = () => {
                 />
               </div>
             )}
-            <Button size="default" className="bg-red-400 hover:bg-red-500">
+            <Button
+              size="default"
+              className={`bg-[${colorCodes[index % colorCodes.length]}] hover:bg-red-500  text-black font-light`}
+              
+            >
               {item.title}
             </Button>
           </Link>

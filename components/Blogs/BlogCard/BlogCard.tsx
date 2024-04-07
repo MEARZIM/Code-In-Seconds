@@ -17,13 +17,12 @@ interface BlogContentProps {
 }
 
 interface BlogCard {
-  key: string
   item: BlogContentProps
 }
 
 
 
-export const BlogCard = ({ key, item }: BlogCard) => {
+export const BlogCard = ({ item }: BlogCard) => {
   
   const createdAt = useMemo(()=>{
     if (item.createdAt == null) {
