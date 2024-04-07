@@ -10,12 +10,12 @@ const TutorialPagelayout = ({
 }) => {
     return (
         <div className="h-full relative">
-            <div className="hidden h-full lg:flex lg:w-72 lg:fixed lg:flex-col lg:inset-y-0 z-[80] bg-gray-900  text-white" >
+            <div className="hidden h-full 2xl:flex 2xl:w-72 2xl:fixed 2xl:flex-col 2xl:inset-y-0 z-[80] bg-gray-900  text-white" >
                 <div>
                     <Sidebar />
                 </div>
             </div>
-            <main className="pl-72 lg:pl-72">
+            <main className="2xl:pl-72">
                 <TutorialHeader />
                 {children}
             </main>

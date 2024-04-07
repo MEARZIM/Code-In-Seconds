@@ -21,7 +21,7 @@ import MobileSidebar from "../Sidebar/MobileSidebar";
 export function TutorialHeader() {
     return (
         <div className="relative w-full flex items-center justify-center h-28 md:h-[14vh]">
-            <Navbar className="top-2" />
+            <Navbar className="top-0" />
         </div>
     );
 }
@@ -30,7 +30,7 @@ function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
     return (
         <div
-            className={cn("fixed top-5 inset-x-0 max-w-xl mx-auto z-50", className)}
+            className={cn("fixed top-5 inset-x-0 max-w-4xl mx-auto z-50", className)}
         >
 
             <Menu setActive={setActive}>
@@ -39,7 +39,7 @@ function Navbar({ className }: { className?: string }) {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <p>Home</p>
+                                <p className="text-zinc-400">Home</p>
                             </TooltipTrigger>
                             <TooltipContent className="bg-white text-black">
                                 <p>Go Back to home</p>
@@ -50,14 +50,14 @@ function Navbar({ className }: { className?: string }) {
 
                 <MenuItem setActive={setActive} active={active} item="Topics">
                     <div className="flex flex-col space-y-4 text-sm">
-                        <HoveredLink href="/web-dev">Html</HoveredLink>
-                        <HoveredLink href="/interface-design">Css</HoveredLink>
-                        <HoveredLink href="/seo">JavaScript</HoveredLink>
-                        <HoveredLink href="/branding">Java</HoveredLink>
+                        <HoveredLink href="/Tutorials/Html">Html</HoveredLink>
+                        <HoveredLink href="/Tutorials/Css">Css</HoveredLink>
+                        <HoveredLink href="/Tutorials/JavaScript">JavaScript</HoveredLink>
+                        <HoveredLink href="/Tutorials/Java">Java</HoveredLink>
                     </div>
                 </MenuItem>
                 <MenuItem setActive={setActive} active={active} item="Products">
-                    <div className=" text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4">
+                    <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4">
                         <ProductItem
                             title="Coding interviews"
                             href="https://algochurn.com"
