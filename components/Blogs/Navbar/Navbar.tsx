@@ -3,12 +3,13 @@
 import React, { useState } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { UserButton } from '@/components/auth/user-button';
+import Link from 'next/link';
 
 export const BlogPageNavBar = () => {
     let Links = [
         { name: "HOME", link: "/" },
         { name: "COURSES", link: "/" },
-        { name: "TUTORIALS", link: "/" },
+        { name: "TUTORIALS", link: "/Tutorials" },
         { name: "JOBS", link: "/" },
         { name: "PROBLEMS", link: "/" },
         { name: "CONTACT", link: "/" },
@@ -39,7 +40,9 @@ export const BlogPageNavBar = () => {
                     {
                         Links.map((link) => (
                             <li className='md:ml-8 md:my-0 my-7 font-semibold' key={link.link}>
-                                <a href={link.link} className='text-white text-xs hover:text-blue-400 duration-500'>{link.name}</a>
+                                <Link href={link.link} className='text-white text-xs hover:text-blue-400 duration-500'>
+                                    {link.name}
+                                    </Link>
                             </li>))
                     }
 
