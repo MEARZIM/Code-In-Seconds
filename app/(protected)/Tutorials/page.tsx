@@ -1,12 +1,14 @@
 import React from 'react'
+import Link from "next/link"
 
-import { TutorialHeader } from '@/components/Tutorials/Header/Header'
+import { CardContent, Card } from "@/components/ui/card"
+import { FeaturedTutorial } from '@/components/Tutorials/TutorialFeatured/Featured'
 
 const page = () => {
   return (
-    <div>
-     
-      this is tutorial page
+    <div className=''>
+
+      <FeaturedTutorial />
     </div>
   )
 }

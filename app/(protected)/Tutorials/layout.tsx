@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { TutorialHeader } from '@/components/Tutorials/Header/Header'
-import {Sidebar} from '@/components/Tutorials/Sidebar/Sidebar'
+import { Sidebar } from '@/components/Tutorials/Sidebar/Sidebar'
+import { TutorialPageFooter } from '@/components/Tutorials/Footer/Footer'
 
 const TutorialPagelayout = ({
     children
@@ -14,12 +15,12 @@ const TutorialPagelayout = ({
                 <div>
                     <Sidebar />
                 </div>
-            </div>
+            </div> 
             <main className="2xl:pl-72">
                 <TutorialHeader />
                 {children}
+                <TutorialPageFooter />
             </main>
-
         </div>
     )
 }
