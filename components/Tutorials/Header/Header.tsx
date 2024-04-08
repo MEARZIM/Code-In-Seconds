@@ -39,7 +39,7 @@ function Navbar({ className }: { className?: string }) {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <p className="text-zinc-400">Home</p>
+                                <p className="text-zinc-400 text-xs md:text-sm">Home</p>
                             </TooltipTrigger>
                             <TooltipContent className="bg-white text-black">
                                 <p>Go Back to home</p>
@@ -49,7 +49,7 @@ function Navbar({ className }: { className?: string }) {
                 </Link>
 
                 <MenuItem setActive={setActive} active={active} item="Topics">
-                    <div className="flex flex-col space-y-4 text-sm">
+                    <div className="flex flex-col space-y-4 text-xs md:text-sm">
                         <HoveredLink href="/Tutorials/Html">Html</HoveredLink>
                         <HoveredLink href="/Tutorials/Css">Css</HoveredLink>
                         <HoveredLink href="/Tutorials/JavaScript">JavaScript</HoveredLink>
