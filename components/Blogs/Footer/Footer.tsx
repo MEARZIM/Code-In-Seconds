@@ -29,6 +29,7 @@ export const Footer = () => {
           <span className="font-bold text-blue-500">Links</span>
           <Link href="/">Homepage</Link>
           <Link href="/Blogs">Blog</Link>
+          <Link href="/Tutorials">Tutorials</Link>
           <Link href="/">About</Link>
           <Link href="/">Contact</Link>
         </div>
