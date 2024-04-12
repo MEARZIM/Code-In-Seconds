@@ -9,7 +9,7 @@ const Featured = () => {
       </h1>
       <div className="flex flex-col lg:flex-row items-center lg:gap-16">
         <div className="lg:flex-1 lg:h-96 relative">
-          <Image src="/p1.jpeg" alt="" layout="fill" objectFit="cover" />
+          <Image src="/culture.png" alt="" layout="fill" objectFit="cover" />
         </div>
         <div className="lg:flex-1 mt-8 lg:mt-0">
           <h1 className="text-3xl font-semibold mb-4">
