@@ -320,7 +320,7 @@ const items = [
     icon: <Fa42Group className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Contextual Suggestions",
+    title: "Learn about Talwind",
     description: (
       <span className="text-sm">
         Get AI-powered suggestions based on your writing context.
@@ -331,7 +331,7 @@ const items = [
     icon: <Fa42Group className="h-4 w-4 text-neutral-500" />,
   },
   {
-    title: "Sentiment Analysis",
+    title: "Make yourself ready for industry",
     description: (
       <span className="text-sm">
         Understand the sentiment of your text with AI analysis.
@@ -343,10 +343,10 @@ const items = [
   },
 
   {
-    title: "Text Summarization",
+    title: "Learn PHP",
     description: (
       <span className="text-sm">
-        Summarize your lengthy documents with AI technology.
+       Become a better PHP programmer, one tutorial at a time.
       </span>
     ),
     header: <SkeletonFive />,

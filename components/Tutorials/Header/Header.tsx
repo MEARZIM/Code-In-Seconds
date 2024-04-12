@@ -1,5 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { 
+   useState 
+} from "react";
+import Link from "next/link";
 
 import {
     HoveredLink,
@@ -14,9 +17,9 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 import { UserButton } from "@/components/auth/user-button";
 import MobileSidebar from "../Sidebar/MobileSidebar";
+import useGetCategories from "@/hooks/useGetCategories";
 
 export function TutorialHeader() {
     return (
@@ -27,7 +30,17 @@ export function TutorialHeader() {
 }
 
 function Navbar({ className }: { className?: string }) {
+    const { data, isLoading } = useGetCategories();
     const [active, setActive] = useState<string | null>(null);
+
+    if (isLoading) {
+        return (
+            <div>
+
+            </div>
+        )
+    }
+
     return (
         <div
             className={cn("fixed top-5 inset-x-0 max-w-4xl mx-auto z-50", className)}
@@ -50,10 +63,10 @@ function Navbar({ className }: { className?: string }) {
 
                 <MenuItem setActive={setActive} active={active} item="Topics">
                     <div className="flex flex-col space-y-4 text-xs md:text-sm">
-                        <HoveredLink href="/Tutorials/Html">Html</HoveredLink>
-                        <HoveredLink href="/Tutorials/Css">Css</HoveredLink>
-                        <HoveredLink href="/Tutorials/JavaScript">JavaScript</HoveredLink>
-                        <HoveredLink href="/Tutorials/Java">Java</HoveredLink>
+                        {data.map((category: any) => (
+                            <HoveredLink href={`/Tutorials/${category.slug}`} className="">{category.title}</HoveredLink>
+                        ))}
+                        
                     </div>
                 </MenuItem>
                 <MenuItem setActive={setActive} active={active} item="Products">
@@ -94,7 +107,7 @@ function Navbar({ className }: { className?: string }) {
                 </MenuItem>
                 <div className="m-0 p-0 flex items-center justify-center">
 
-                <UserButton />
+                    <UserButton />
                 </div>
             </Menu>
         </div>

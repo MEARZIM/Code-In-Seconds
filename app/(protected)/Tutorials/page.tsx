@@ -7,7 +7,6 @@ import { FeaturedTutorial } from '@/components/Tutorials/TutorialFeatured/Featur
 const page = () => {
   return (
     <div className=''>
-
       <FeaturedTutorial />
     </div>
   )

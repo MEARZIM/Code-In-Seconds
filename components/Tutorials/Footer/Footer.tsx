@@ -12,7 +12,7 @@ import {
 
 export const TutorialPageFooter = () => {
   return (
-    <footer className="max-w-5xl w-full bg-inherit py-16 mx-auto md:mx-[10vw]">
+    <footer className="relative -left-0 2xl:-left-[140px] max-w-5xl w-full bg-inherit py-16 mx-auto">
       <div className="container">
         <div className="flex flex-wrap justify-between lg:justify-between text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
