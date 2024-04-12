@@ -63,6 +63,7 @@ model User {
   post         Post[]
   comments     Comment[]
   notification Notification[]
+  tutorial Tutorial[]
 
   @@map("users")
 }
@@ -108,6 +109,7 @@ model Category {
   title String
   img   String?
   Posts Post[]
+  tutorial Tutorial[]
 }
 
 model Post {
@@ -129,6 +131,7 @@ model Post {
   // postCategory PostCategory[] // Adding the opposite relation field
 }
 
+
 // model PostCategory {
 //   id         String @id @default(auto()) @map("_id") @db.ObjectId
 //   postId     String @db.ObjectId
@@ -137,6 +140,22 @@ model Post {
 //   post     Post       @relation(fields: [postId], references: [id])
 //   category Categories @relation(fields: [categoryId], references: [id])
 // }
+
+// Tutorial Post (A tutorial can be a Blog But a every blog Cann't be a Blog)
+model Tutorial {
+  id         String    @id @default(cuid()) @map("_id")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  slug       String    @unique
+  title      String
+  desc       String
+  img        String?
+  views      Int       @default(0)
+  catSlug    String
+  cat        Category  @relation(fields: [catSlug], references: [slug])
+  userId     String    @db.ObjectId
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
 
 model Comment {
   id        String   @id @default(cuid()) @map("_id")
