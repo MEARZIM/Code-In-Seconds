@@ -1,17 +1,23 @@
-import React from 'react'
+"use client"
 
-const page = ({
-    params
-}: {
-    params: {
-        slug: string
-    }
-}) => {
+import React from 'react'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+import ProblemGrid from '@/components/Problems/ProblemGrid/ProblemGrid'
+
+const queryClient = new QueryClient()
+
+const page=() => {
   return (
-    <div>
-      In problem  slug: {params.slug}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <ProblemGrid />
+    </QueryClientProvider>
   )
 }
+
+
 
 export default page

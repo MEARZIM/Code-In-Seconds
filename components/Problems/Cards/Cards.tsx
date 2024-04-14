@@ -7,16 +7,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 
-const blogContent = {
-  slug: "amazing-tailwindcss-grid-layouts",
-  author: "Manu Arora",
-  date: "28th March, 2023",
-  title: "Amazing Tailwindcss Grid Layout Examples",
-  description:
-    "Grids are cool, but Tailwindcss grids are cooler. In this article, we will learn how to create amazing Grid layouts with Tailwindcs grid and React.",
-  image: "/culture.png",
-  authorAvatar: "/culture.png",
-};
 
 interface CategoriesProps {
   id: string,
@@ -80,7 +70,7 @@ export const ProblemCard = ({
 
 
 
-const TitleComponent = ({
+export const TitleComponent = ({
   title,
   avatar,
 }: {
