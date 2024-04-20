@@ -12,7 +12,7 @@ const MainComponentlayout = ({
             <SWRProvider>
                 <AuthProvider>
                     <div className='bg-white text-black'>
-                    {children}
+                        {children}
                     </div>
                 </AuthProvider>
             </SWRProvider>
