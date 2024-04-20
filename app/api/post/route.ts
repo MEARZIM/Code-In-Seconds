@@ -1,6 +1,8 @@
-import { auth } from "@/auth"
-import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
+
+import { db } from "@/lib/db";
+import { auth } from "@/auth"
+
 
 const POST_PER_PAGE = 5;
 
@@ -17,7 +19,6 @@ export async function GET(
     const page = searchParams.get('page');
     const cat = searchParams.get('cat');
    
-    console.log(postId)
     try {
 
         const verfiedUser = await auth();
