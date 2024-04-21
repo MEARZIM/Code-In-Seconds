@@ -1,12 +1,19 @@
 "use client"
+
 import React from 'react'
 import { UserRole } from '@prisma/client'
 
-import { useCurrentRole } from '@/hooks/use-current-role'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { 
+    Card, 
+    CardContent, 
+    CardHeader, 
+    CardTitle 
+} from '@/components/ui/card'
 import { RoleGate } from '@/components/auth/role-gate'
-import { FormSuccess } from '@/components/auth/success/form-success'
+import { useCurrentRole } from '@/hooks/use-current-role'
+import { ProblemForm } from '@/components/admin/Problem-form'
 import { TutorialForm } from '@/components/admin/Tutorials-form'
+import { FormSuccess } from '@/components/auth/success/form-success'
 
 const Adminpage = () => {
 
@@ -27,6 +34,7 @@ const Adminpage = () => {
                             message='Welcome Admin'
                         />
                         <TutorialForm />
+                        <ProblemForm />
                     </RoleGate>
                
             </CardContent>

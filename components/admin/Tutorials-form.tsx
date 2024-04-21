@@ -137,7 +137,7 @@ export const TutorialForm = () => {
     return (
         <div className='border my-4'>
             <div className="p-4">
-                <h1 className="font-semibold">Add New Tutorial</h1>
+                <h1 className="font-semibold underline decoration-sky-500/30">Add New Tutorial</h1>
             </div>
 
             <div className="">

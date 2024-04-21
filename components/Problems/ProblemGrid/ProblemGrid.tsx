@@ -1,24 +1,33 @@
-import React from 'react'
-import Link from 'next/link'
+import React, { 
+    useState
+} from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-import { FollowerPointerCard } from '@/components/ui/following-pointer'
-import { TitleComponent } from '../Cards/Cards'
 import { Badge } from '@/components/ui/badge'
+import { TitleComponent } from '../Cards/Cards'
 import { Button } from '@/components/ui/button'
+import { FollowerPointerCard } from '@/components/ui/following-pointer'
 
-
-const problemsDemoData = {
-    slug: 'HTML',
-    question: 'is html is good?',
-    answer: 'yes'
+interface ProblemProps {
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+    slug: string,
+    question: string,
+    answer: string,
+    views: number,
+    catSlug: string,
+    userId: string
 }
+
 
 const ProblemGrid = () => {
     const { ref, inView } = useInView()
+    const [problems, setProblems] = useState<ProblemProps[]>([]);
 
     const {
         status,
@@ -34,8 +43,8 @@ const ProblemGrid = () => {
     } = useInfiniteQuery({
         queryKey: ['projects'],
         queryFn: async ({ pageParam }) => {
-            const res = await axios.get('https://jsonplaceholder.typicode.com/todos?_page=' + pageParam)
-            console.log(res.data)
+            const res = await axios.get('/api/admin/problems?page=' + pageParam)
+            setProblems(res.data);
             return res.data
         },
         initialPageParam: 1,
@@ -56,36 +65,33 @@ const ProblemGrid = () => {
             </div>
         )
     }
+
     return (
-        <div className="w-full max-w-4xl mx-auto">
-            <FollowerPointerCard
-                title={
-                    <TitleComponent
-                        title={problemsDemoData.slug}
-                    />
-                }
-            >
-                <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
-                    <div className=" p-4">
-                        <h2 className="font-bold my-4 text-lg text-zinc-700">
-                            {problemsDemoData.question}
-                        </h2>
-                        <h2 className="font-normal my-4 text-sm text-zinc-500">
-                            {problemsDemoData.answer}
-                        </h2>
-                        <div className="flex flex-row justify-between items-center mt-10">
-                            <span className="text-sm text-gray-500">
-                                <Badge variant="destructive">{problemsDemoData.slug}</Badge>
-                            </span>
-                            <Link href={`/Problems/${problemsDemoData.slug}`}>
-                                <Button className="relative z-10 px-6 py-2 text-xs">
-                                    Solve Problems
-                                </Button>
-                            </Link>
+        <div className="w-full max-w-4xl mx-auto my-2">
+            {problems.map((problem: ProblemProps) => (
+                <section className='my-2'>
+                        <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
+                            <div className=" p-4">
+                                <h2 className="font-bold my-4 text-lg text-zinc-700">
+                                    {problem.question}
+                                </h2>
+                                <h2 className="font-normal my-4 text-sm text-zinc-500">
+                                    {problem.answer}
+                                </h2>
+                                <div className="flex flex-row justify-between items-center mt-10">
+                                    <span className="text-sm text-gray-500">
+                                        <Badge variant="destructive">{problem.catSlug}</Badge>
+                                    </span>
+                                    <Link href={`/Problems/${problem.catSlug}`}>
+                                        <Button className="relative z-10 px-6 py-2 text-xs">
+                                            Solve Problems
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </FollowerPointerCard>
+                </section>
+            ))}
             <ReactQueryDevtools initialIsOpen />
         </div>
     )
@@ -93,5 +99,7 @@ const ProblemGrid = () => {
 
 
 export default ProblemGrid
+
+
 
 

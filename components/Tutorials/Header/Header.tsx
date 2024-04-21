@@ -73,25 +73,25 @@ function Navbar({ className }: { className?: string }) {
                     <div className="text-sm grid grid-cols-1 md:grid-cols-2 gap-10 p-4">
                         <ProductItem
                             title="Coding interviews"
-                            href="https://algochurn.com"
+                            href=""
                             src="/interview.jpg"
                             description="Prepare for tech interviews like never before."
                         />
                         <ProductItem
                             title="Tailwind Master"
-                            href="https://tailwindmasterkit.com"
+                            href=""
                             src="/tailwindCss.webp"
                             description="Master your Tailwind Css skills"
                         />
                         <ProductItem
                             title="Explore"
-                            href="https://gomoonbeam.com"
+                            href=""
                             src="/explore.jpg"
                             description="Explore Differnet Domains."
                         />
                         <ProductItem
                             title="Get a Hired"
-                            href="https://userogue.com"
+                            href=""
                             src="/jobs.jpg"
                             description="If you are ready apply for a new job."
                         />
@@ -99,10 +99,9 @@ function Navbar({ className }: { className?: string }) {
                 </MenuItem>
                 <MenuItem setActive={setActive} active={active} item="Services">
                     <div className="flex flex-col space-y-4 text-sm">
-                        <HoveredLink href="/hobby">Free Tutorials</HoveredLink>
-                        <HoveredLink href="/individual">References</HoveredLink>
-                        <HoveredLink href="/team">Create a WebSite</HoveredLink>
-                        <HoveredLink href="/enterprise">WeB Hosting</HoveredLink>
+                        <HoveredLink href="/Tutorials">Free Tutorials</HoveredLink>
+                        <HoveredLink href="/Blogs">Blogs</HoveredLink>
+                        <HoveredLink href="/Jobs">Find a Job</HoveredLink>
                     </div>
                 </MenuItem>
                 <div className="m-0 p-0 flex items-center justify-center">
