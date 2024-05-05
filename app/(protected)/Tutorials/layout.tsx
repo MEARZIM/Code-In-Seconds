@@ -22,10 +22,13 @@ const TutorialPagelayout = ({
                    <Sidebar />
                 </div>
             </div> 
-            <main className="2xl:pl-72">
+            <main className="">
                 <TutorialHeader />
                 {children}
+                <footer className='ml-20'>
+
                 <TutorialPageFooter />
+                </footer>
             </main>
         </div>
     )

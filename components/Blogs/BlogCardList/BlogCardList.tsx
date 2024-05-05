@@ -1,8 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Link from "next/link";
-import Image from "next/image";
 
 import Pagination from "../Pagination/Pagination";
 import { BlogCard } from "../BlogCard/BlogCard";
@@ -55,7 +53,6 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
     getData();
   }, [page, cat])
 
-  // console.log(post)
   if (loading) {
     return (
       <section className='flex flex-col mx-auto gap-4 my-5'>

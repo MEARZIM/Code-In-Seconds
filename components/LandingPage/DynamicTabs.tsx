@@ -6,55 +6,46 @@ import { Tabs } from "../ui/tabs";
 export function DynamicTabs() {
   const tabs = [
     {
-      title: "Product",
-      value: "product",
+      title: "Tutorials",
+      value: "Tutorials",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Product Tab</p>
+          <p>Tutorials Tab</p>
           <DummyContent />
         </div>
       ),
     },
     {
-      title: "Services",
-      value: "services",
+      title: "Problems",
+      value: "Problems",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Services tab</p>
+          <p>Problems tab</p>
           <DummyContent />
         </div>
       ),
     },
     {
-      title: "Playground",
-      value: "playground",
+      title: "Blogs",
+      value: "Blogs",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Playground tab</p>
+          <p>Blogs tab</p>
           <DummyContent />
         </div>
       ),
     },
     {
-      title: "Content",
-      value: "content",
+      title: "Jobs",
+      value: "Jobs",
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Content tab</p>
+          <p>Jobs tab</p>
           <DummyContent />
         </div>
       ),
     },
-    {
-      title: "Random",
-      value: "random",
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900">
-          <p>Random tab</p>
-          <DummyContent />
-        </div>
-      ),
-    },
+    
   ];
 
   return (
@@ -68,14 +59,16 @@ const DummyContent = () => {
   return (
     <>
       <div className="my-2">
-
+        <p className="text-gray-300 font-normal text-lg my-10">
+        Unlock Your Potential with Our Coding Tutorials: Dive Deep, Learn Fast, and Master Every Concept. Empowering You to Excel in Your Coding Journey.
         <Image
           src="/coding.png"
           alt="dummy image"
           width="480"
-          height="480"
-          className="object-cover object-left-top h-[60%]  md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
+          height="280"
+          className="object-cover object-left-top h-[40%]  md:h-[75%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"
         />
+        </p>
       </div>
     </>
   );

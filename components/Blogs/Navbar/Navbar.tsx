@@ -1,13 +1,20 @@
 "use client"
 
-import React, { useState } from 'react';
-import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { UserButton } from '@/components/auth/user-button';
+import React, {
+    useState
+} from 'react';
+import {
+    Bars3BottomRightIcon,
+    XMarkIcon
+} from '@heroicons/react/24/solid'
 import Link from 'next/link';
+import Image from 'next/image';
+
+import { UserButton } from '@/components/auth/user-button';
 
 export const BlogPageNavBar = () => {
     let Links = [
-        { name: "COURSES", link: "/" },
+        // { name: "COURSES", link: "/" },
         { name: "TUTORIALS", link: "/Tutorials" },
         { name: "JOBS", link: "/" },
         { name: "PROBLEMS", link: "/Problems" },
@@ -20,9 +27,11 @@ export const BlogPageNavBar = () => {
             <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-5xl'>
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
-                    <div className=' text-blue-600' >
-                        LOGO
+
+                    <div className=" mx-4 bg-sky-200">
+                        <Image alt="Logo" src="/icon.png" width={40} height={40} />
                     </div>
+
                     <span>CodeInSeconds</span>
                 </div>
                 {/* Menu icon */}
@@ -41,7 +50,7 @@ export const BlogPageNavBar = () => {
                             <li className='md:ml-8 md:my-0 my-7 font-semibold' key={link.link}>
                                 <Link href={link.link} className='text-white text-xs hover:text-blue-400 duration-500'>
                                     {link.name}
-                                    </Link>
+                                </Link>
                             </li>))
                     }
 
