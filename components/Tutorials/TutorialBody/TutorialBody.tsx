@@ -28,7 +28,7 @@ export const TutorialBody = ({ catSlug, slug }: Props) => {
 
     return (
         <>
-            <section className="w-full max-w-4xl 2xl:ml-72 mx-auto py-6 md:py-12">
+            <section className="w-full max-w-4xl mx-auto py-6 md:py-12">
                 <div className="container px-4 md:px-6">
                     <div className="grid gap-6 md:gap-8 lg:gap-10">
                         <div className="grid gap-2">

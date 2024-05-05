@@ -13,11 +13,10 @@ const font = Montserrat({ weight: '600', subsets: ['latin'] });
 export const LandingNavbar = () => {
 
     return (
-        <nav className="p-4 bg-transparent flex items-center justify-between">
+        <nav className="p-2 bg-transparent flex items-center justify-between">
             <Link href="/" className="flex items-center">
-                <div className="relative h-8 w-8 mr-4">
-                    <img alt="Logo" src="https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1710429570~exp=1710430170~hmac=ef9fc14d93c1d985396b1ae06cc0c6140ef0208225fe2a351386e6bd79808f71" />
-
+                <div className=" mx-4">
+                    <Image alt="Logo" src="/icon.png" width={40} height={40}/>
                 </div>
                 <h1 className={cn("text-lg md:text-2xl text-sky-400 font-bold", font.className)}>
                     Code In Seconds

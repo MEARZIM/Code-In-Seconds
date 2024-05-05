@@ -16,6 +16,7 @@ import { ManageAccountModal } from "@/components/auth/modals/manageAccountModal"
 import { useManageAccountModal } from "@/hooks/useManageAccountModal";
 import { useCurrentUserThroughSessions } from "@/hooks/useCurrentUserThroughSessions";
 import "./userButton.css"
+import { Skeleton } from "../ui/skeleton";
 
 
 
@@ -45,15 +46,15 @@ export const UserButton = () => {
 
         <div className="relative">
             <button className="block m-2 rounded-full shadow-lg bg-white" onClick={toggleDropdown}>
-                <Avatar>
-                    <AvatarImage 
-                    alt="User profile picture" 
-                    src={user?.image || ""} 
+                {user ? (<Avatar>
+                    <AvatarImage
+                        alt="User profile picture"
+                        src={user?.image || ""}
                     />
                     <AvatarFallback className="bg-sky-500">
                         <FaUser className="text-white" />
                     </AvatarFallback>
-                </Avatar>
+                </Avatar>): <Skeleton className="h-12 w-12 rounded-full" />}
             </button>
 
             {isDropdownOpen && (
@@ -91,14 +92,13 @@ export const UserButton = () => {
                         </Button>
                     </div>
                     <div className="px-4 py-2 text-xs text-gray-400">
-                        Secured by 
+                        Secured by
                     </div>
                 </div>
             )}
         </div>
 
         {isOpen && (
-
             <div className="flex justify-center items-center">
                 <ManageAccountModal />
             </div>
