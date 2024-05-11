@@ -14,11 +14,12 @@ import { UserButton } from '@/components/auth/user-button';
 
 export const BlogPageNavBar = () => {
     let Links = [
+        { name: "BLOGS", link: "/Blogs" },
         // { name: "COURSES", link: "/" },
         { name: "TUTORIALS", link: "/Tutorials" },
         { name: "JOBS", link: "/" },
         { name: "PROBLEMS", link: "/Problems" },
-        { name: "CONTACT", link: "/" },
+        // { name: "CONTACT", link: "/" },
     ];
     let [open, setOpen] = useState(false);
 
@@ -32,7 +33,7 @@ export const BlogPageNavBar = () => {
                         <Image alt="Logo" src="/icon.png" width={40} height={40} />
                     </div>
 
-                    <span>CodeInSeconds</span>
+                    <span className='text-white font-semibold' >CodeInSeconds</span>
                 </div>
                 {/* Menu icon */}
                 <div className=''>

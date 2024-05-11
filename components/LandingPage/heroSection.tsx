@@ -1,6 +1,10 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useState
+} from 'react'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 import { TextGenerateEffect } from '../ui/text-generate-effect'
@@ -11,6 +15,7 @@ const highlights = `The go-to platform for Learning, practising and landing your
 
 
 export const HeroSection = () => {
+  const router = useRouter();
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -28,7 +33,7 @@ export const HeroSection = () => {
           <div className="container flex justify-center items-center gap-4 px-4 text-center md:px-6 lg:gap-10 ">
             <div className="space-y-10">
               <div className="inline-block rounded-lg bg-gray-200 px-3 py-1 text-sm dark:bg-gray-800">
-                 Code & Innovate
+                Code & Innovate
               </div>
               <h1 className="text-3xl text-black font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
                 <TextGenerateEffect words={FocusWords} />
@@ -39,7 +44,16 @@ export const HeroSection = () => {
 
               </p>
               <div className='p-10 '>
-                <Button variant="ghost" className=' text-white bg-violet-600 hover:bg-violet-800 hover:text-white ' size="lg"> Start Reading</Button>
+                <Button
+                  variant="ghost"
+                  className=' text-white bg-violet-600 hover:bg-violet-800 hover:text-white '
+                  size="lg"
+                  onClick={() => {
+                    router.push('/Tutorials');
+                  }}
+                >
+                  Start Reading Tutorials
+                </Button>
               </div>
             </div>
 

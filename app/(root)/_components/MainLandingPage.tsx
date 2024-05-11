@@ -44,14 +44,10 @@ export function LandingPage() {
 
     <section className="max-w-7xl mx-auto ">
       <Weal />
-      <StickyScrollSection />
       <DynamicTabs />
-      <CardFlip />
+      <StickyScrollSection />
+      {/* <CardFlip /> */}
     </section>
-
-    
-
-    
 
     <footer className="max-w-7xl mx-auto">
       <NewsLetter />

@@ -90,7 +90,7 @@ const page = () => {
 
   }, [])
 
-  if (Category.length == 0) {
+  if (!Category) {
     return (
       <div>
         loading...
@@ -112,7 +112,7 @@ const page = () => {
       return
     }
     try {
-      await axios.post('/api/post', {
+      await axios.post('/api/blogs', {
         title: title,
         catSlug: catSlug,
         blog: blog,

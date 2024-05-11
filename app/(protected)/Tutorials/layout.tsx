@@ -13,7 +13,7 @@ const TutorialPagelayout = ({
     children: React.ReactNode
 }) => {
     const pathname = usePathname();
-    console.log(pathname)
+    // console.log(pathname)
 
     return (
         <div className="h-full relative">
