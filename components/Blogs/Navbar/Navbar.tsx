@@ -29,7 +29,7 @@ export const BlogPageNavBar = () => {
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
 
-                    <div className=" mx-4 bg-sky-200">
+                    <div className=" mx-4 bg-indigo-800">
                         <Image alt="Logo" src="/icon.png" width={40} height={40} />
                     </div>
 

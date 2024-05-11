@@ -10,10 +10,16 @@ import ProblemGrid from '@/components/Problems/ProblemGrid/ProblemGrid'
 
 const queryClient = new QueryClient()
 
-const page=() => {
+const page=({
+  params
+} : {
+  params: {
+    slug: string
+  }
+}) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ProblemGrid />
+      <ProblemGrid params={params} />
     </QueryClientProvider>
   )
 }

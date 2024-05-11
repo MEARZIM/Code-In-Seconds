@@ -5,9 +5,10 @@ import { auth } from "@/auth";
 import { currentUserRole } from "@/lib/auth";
 import { db } from "@/lib/db";
 
+const PROBLEM_PER_PAGE = 10;
 
-export async function POST(
-    req: Request,
+export async function GET(
+    req: Request
 ) {
     try {
         const verfiedUser = await auth();
@@ -21,33 +22,26 @@ export async function POST(
             return new NextResponse("You do not have permission to access this route", { status: 403 });
         }
 
-        const body = await req.json();
+        const { searchParams } = new URL(req.url);
 
-        const {
-            catSlug,
-            question,
-            answer
-        } = body
+        const page = searchParams.get('page');
+        const cat = searchParams.get('cat');
+       
 
-        // Space Remove
-        let str = question;
-        const slug = str.replace(/\s/g, "");
-
-        const problems = await db.problem.create({
-            data: {
-                slug: slug,
-                question: question,
-                answer: answer,
-                catSlug: catSlug,
-                userId: verfiedUser.user.id as string,
+        const query = {
+            take: PROBLEM_PER_PAGE,
+            skip: PROBLEM_PER_PAGE * (Number(page) - 1),
+            where: {
+                catSlug: cat as string
             }
-        })
+        };
 
-        return NextResponse.json("Problems Added successfully", { status: 200 })
+        const problems = await db.problem.findMany(query);
+        
+        return NextResponse.json(problems, { status: 200 })
 
     } catch (error) {
         return new NextResponse("Internal Server Error", { status: 500 });
     }
 
 }
-

@@ -4,15 +4,16 @@ import React, { useState } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { UserButton } from '@/components/auth/user-button';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const ProblemNavbar = () => {
     let Links = [
-        { name: "HOME", link: "/" },
-        { name: "COURSES", link: "/" },
         { name: "BLOGS", link: "/Blogs" },
+        // { name: "COURSES", link: "/" },
         { name: "TUTORIALS", link: "/Tutorials" },
         { name: "JOBS", link: "/" },
-        { name: "CONTACT", link: "/" },
+        { name: "PROBLEMS", link: "/Problems" },
+        // { name: "CONTACT", link: "/" },
     ];
     let [open, setOpen] = useState(false);
 
@@ -21,10 +22,11 @@ export const ProblemNavbar = () => {
             <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-5xl'>
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
-                    <div className=' text-blue-600' >
-                        LOGO
+                <div className=" mx-4 bg-blue-400">
+                        <Image alt="Logo" src="/icon.png" width={40} height={40} />
                     </div>
-                    <span>CodeInSeconds</span>
+
+                    <span className='text-white font-semibold' >CodeInSeconds</span>
                 </div>
                 {/* Menu icon */}
                 <div className=''>

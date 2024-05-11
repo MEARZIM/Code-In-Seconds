@@ -8,9 +8,6 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import { Badge } from '@/components/ui/badge'
-import { TitleComponent } from '../Cards/Cards'
-import { Button } from '@/components/ui/button'
-import { FollowerPointerCard } from '@/components/ui/following-pointer'
 
 interface ProblemProps {
     id: string,
@@ -25,7 +22,14 @@ interface ProblemProps {
 }
 
 
-const ProblemGrid = () => {
+const ProblemGrid = ({
+    params
+  } : {
+    params: {
+      slug: string
+    }
+  }) => {
+   
     const { ref, inView } = useInView()
     const [problems, setProblems] = useState<ProblemProps[]>([]);
 
@@ -43,7 +47,7 @@ const ProblemGrid = () => {
     } = useInfiniteQuery({
         queryKey: ['projects'],
         queryFn: async ({ pageParam }) => {
-            const res = await axios.get('/api/admin/problems?page=' + pageParam)
+            const res = await axios.get(`/api/problems?page=${pageParam}&cat=${params.slug}`)
             setProblems(res.data);
             return res.data
         },
@@ -65,7 +69,15 @@ const ProblemGrid = () => {
             </div>
         )
     }
-
+    else if (problems.length === 0) {
+        return (
+            <div className='flex justify-center items-center text-2xl'>
+                No Problems Found
+            </div>
+        )
+    }
+    
+    console.log(problems)
     return (
         <div className="w-full max-w-4xl mx-auto my-2">
             {problems.map((problem: ProblemProps) => (
@@ -82,11 +94,7 @@ const ProblemGrid = () => {
                                     <span className="text-sm text-gray-500">
                                         <Badge variant="destructive">{problem.catSlug}</Badge>
                                     </span>
-                                    <Link href={`/Problems/${problem.catSlug}`}>
-                                        <Button className="relative z-10 px-6 py-2 text-xs">
-                                            Solve Problems
-                                        </Button>
-                                    </Link>
+                                    
                                 </div>
                             </div>
                         </div>
