@@ -15,8 +15,8 @@ import { SignOut } from '@/actions/signout';
 import { ManageAccountModal } from "@/components/auth/modals/manageAccountModal";
 import { useManageAccountModal } from "@/hooks/useManageAccountModal";
 import { useCurrentUserThroughSessions } from "@/hooks/useCurrentUserThroughSessions";
-import "./userButton.css"
 import { Skeleton } from "../ui/skeleton";
+import "./userButton.css"
 
 
 
@@ -92,7 +92,8 @@ export const UserButton = () => {
                         </Button>
                     </div>
                     <div className="px-4 py-2 text-xs text-gray-400">
-                        Secured by
+                        Devoloped By Ayan Saha <br />
+                        {'(asahaayan@gmail.com)'}
                     </div>
                 </div>
             )}

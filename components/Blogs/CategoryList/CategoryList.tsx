@@ -37,7 +37,7 @@ export const CategoryList = () => {
 
   }, [])
 
-  if (Category.length == 0) {
+  if (!Category) {
     return (
       <section className='flex flex-col mx-auto gap-4 my-5'>
         <div className="flex flex-col space-y-3">
@@ -77,7 +77,6 @@ export const CategoryList = () => {
             <Button
               size="default"
               className={`bg-[${colorCodes[index % colorCodes.length]}] hover:bg-red-500  text-black font-light`}
-              
             >
               {item.title}
             </Button>

@@ -34,7 +34,7 @@ export const ManageAccountModal = () => {
     const ManageAccountModal = useManageAccountModal();
 
     const user = useCurrentUserThroughSessions();
-    // console.log(user);
+   
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -88,14 +88,14 @@ export const ManageAccountModal = () => {
                             <div>
                                 <h2 className="text-lg font-semibold ">Connected accounts</h2>
                                 <div className="mt-2 flex items-center space-x-4">
-                                    <FcGoogle className='h-5 w-5' />
-                                    <span className="text-sm">Google ({user?.email})</span>
+                                    {/* <FcGoogle className='h-5 w-5' /> */}
+                                    <span className="text-sm">({user?.email})</span>
                                 </div>
 
                             </div>
                             <div className="">
 
-                                <Form {...form}>
+                                {/* <Form {...form}>
                                     <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
                                         <div>
                                             <h2 className="text-lg font-semibold mb-2">Two Factor Authentication</h2>
@@ -127,11 +127,11 @@ export const ManageAccountModal = () => {
                                             <Button type="submit">Submit</Button>
                                         </div>
                                     </form>
-                                </Form>
+                                </Form> */}
 
                             </div>
 
-                            <div>
+                            {/* <div>
                                 <h2 className="text-lg font-bold">Denger</h2>
                                 <div className="mt-2 flex items-center justify-between space-x-4">
                                     <div className="text-sm">
@@ -145,7 +145,7 @@ export const ManageAccountModal = () => {
                                     </Button>
                                 </div>
 
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </section>

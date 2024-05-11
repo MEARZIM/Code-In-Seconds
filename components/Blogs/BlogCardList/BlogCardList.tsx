@@ -1,11 +1,15 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { 
+  useEffect, 
+  useState 
+} from "react";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import Pagination from "../Pagination/Pagination";
 import { BlogCard } from "../BlogCard/BlogCard";
-import toast from "react-hot-toast";
 import { Skeleton } from "@/components/ui/skeleton";
+
 
 
 interface BlogCardListProps {
@@ -36,7 +40,7 @@ export const BlogCardList = ({ page, cat }: BlogCardListProps) => {
         setLoading(true);
 
         const res = await axios.get(
-          `/api/post?page=${page}&cat=${cat || ""}`
+          `/api/blogs?page=${page}&cat=${cat || ""}`
         );
 
         setPostCount(res.data.count);

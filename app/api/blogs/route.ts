@@ -6,7 +6,7 @@ import { auth } from "@/auth"
 
 const POST_PER_PAGE = 5;
 
-//Geting all the Post
+//Geting all the Blogs
 export async function GET(
     req: Request
 ) {
@@ -89,7 +89,7 @@ export async function GET(
     }
 }
 
-// Create a new Post
+// Create a new Blog
 export async function POST(
     req: Request,
 ) {
