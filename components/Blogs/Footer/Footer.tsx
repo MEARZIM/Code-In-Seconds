@@ -9,7 +9,12 @@ export const Footer = () => {
     <div className="mt-10 px-4 py-5 flex flex-col lg:flex-row items-center justify-between text-gray-500">
       <div className="lg:flex lg:flex-col lg:gap-2">
         <div className="flex items-center gap-4">
-          <img src="https://img.freepik.com/free-vector/colorful-bird-illustration-gradient_343694-1741.jpg?w=826&t=st=1710429570~exp=1710430170~hmac=ef9fc14d93c1d985396b1ae06cc0c6140ef0208225fe2a351386e6bd79808f71" alt="logo" width={50} height={50} />
+          <Image
+            src="/icon.png"
+            alt="logo"
+            width={50}
+            height={50}
+          />
           <h1 className="text-2xl font-bold text-blue-500">Code in Seconds</h1>
         </div>
         <p className="font-light mx-2">
@@ -20,7 +25,7 @@ export const Footer = () => {
         </p>
         <div className="flex justify-center md:justify-start gap-4 m-4">
           <FaFacebook size={18} color="blue" />
-          <AiFillInstagram  size={18} className="text"/>
+          <AiFillInstagram size={18} className="text" />
           <FaYoutube size={18} color="red" />
         </div>
       </div>

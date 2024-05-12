@@ -65,7 +65,7 @@ const Page = ({
 
     };
     getData(params.slug);
-  }, [])
+  }, [params.slug])
 
   if (!blogContent) {
     return (
