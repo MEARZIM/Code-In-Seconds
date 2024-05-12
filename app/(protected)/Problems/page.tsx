@@ -14,7 +14,7 @@ interface CategoriesProps {
   img?: string,
 }
 
-const page = () => {
+const Page = () => {
   const { data, isLoading } = useGetCategories();
 
   if (isLoading) {
@@ -39,4 +39,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

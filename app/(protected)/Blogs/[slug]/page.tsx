@@ -43,7 +43,7 @@ interface BlogContentProps {
 }
 
 
-const page = ({
+const Page = ({
   params
 }: {
   params: {
@@ -143,4 +143,4 @@ const page = ({
   )
 }
 
-export default page
+export default Page

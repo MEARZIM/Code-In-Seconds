@@ -81,7 +81,7 @@ const ProblemGrid = ({
     return (
         <div className="w-full max-w-4xl mx-auto my-2">
             {problems.map((problem: ProblemProps) => (
-                <section className='my-2'>
+                <section className='my-2' key={problem.id}>
                         <div className="relative overflow-hidden h-full rounded-2xl transition duration-200 group bg-white hover:shadow-xl border border-zinc-100">
                             <div className=" p-4">
                                 <h2 className="font-bold my-4 text-lg text-zinc-700">

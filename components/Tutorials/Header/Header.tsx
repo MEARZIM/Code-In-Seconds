@@ -1,6 +1,6 @@
 "use client";
-import React, { 
-   useState 
+import React, {
+    useState
 } from "react";
 import Link from "next/link";
 
@@ -64,9 +64,14 @@ function Navbar({ className }: { className?: string }) {
                 <MenuItem setActive={setActive} active={active} item="Topics">
                     <div className="flex flex-col space-y-4 text-xs md:text-sm">
                         {data.map((category: any) => (
-                            <HoveredLink href={`/Tutorials/${category.slug}`} className="">{category.title}</HoveredLink>
+                            <div key={category.id}>
+                                <HoveredLink
+                                    href={`/Tutorials/${category.slug}`}
+                                    className=""
+                                >{category.title}</HoveredLink>
+                            </div>
                         ))}
-                        
+
                     </div>
                 </MenuItem>
                 <MenuItem setActive={setActive} active={active} item="Products">

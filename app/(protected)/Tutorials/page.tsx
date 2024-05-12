@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FeaturedTutorial } from '@/components/Tutorials/TutorialFeatured/Featured'
 
-const page = () => {
+const Page = () => {
   return (
     <div className=''>
       <FeaturedTutorial />
@@ -10,4 +10,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

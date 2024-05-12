@@ -39,7 +39,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         } else if (href) {
           router.push(href);
         }
-      }, [router, href, auth, onClick, currentUser]);
+      }, [router, href, onClick, currentUser]);
 
     return (
         <div

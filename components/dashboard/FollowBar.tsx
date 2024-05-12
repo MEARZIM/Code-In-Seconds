@@ -35,7 +35,7 @@ export const FollowBar = () => {
         <div className='flex justify-center flex-col gap-4 mt-4'>
           {/* Users List */}
           {user && (user.map((user: Record<string, any>) => (
-            <div className='flex flex-row gap-2'>
+            <div className='flex flex-row gap-2' key={user.id}>
               <UserAvatar
                 userId={user.id}
               />

@@ -10,14 +10,13 @@ import { format } from "date-fns";
 import useUser from '@/hooks/useUser'
 import { Button } from '@/components/ui/button'
 import { AvatarFallback, Avatar, AvatarImage } from '@/components/ui/avatar'
-
 import { useCurrentUserThroughSessions } from '@/hooks/useCurrentUserThroughSessions'
 import useEditModal from '@/hooks/useEditModal'
 import EditModal from '@/components/auth/modals/EditModal'
 import PostFeed from '@/components/dashboard/PostFeed/postFeed'
 import { BlogPageNavBar } from '@/components/Blogs/Navbar/Navbar'
 
-const page = ({
+const Page = ({
   params
 }: {
   params: {
@@ -145,4 +144,4 @@ const page = ({
   )
 }
 
-export default page
+export default Page

@@ -133,7 +133,10 @@ export const Comments = (postId: Props) => {
                     <section>
                         {data.map((item: any) => (
 
-                            <div className="max-w-4xl  mx-auto border px-6 py-4 rounded-lg my-2">
+                            <div
+                                className="max-w-4xl  mx-auto border px-6 py-4 rounded-lg my-2"
+                                key={item.id}
+                            >
                                 <div className="flex align-baseline items-center mb-6 mx-2">
                                     <div className="w-10 " >
                                         <Avatar>

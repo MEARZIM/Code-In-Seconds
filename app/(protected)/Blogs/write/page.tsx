@@ -63,7 +63,7 @@ const blogChecker = (data: string) => {
 
 
 
-const page = () => {
+const Page = () => {
   const [blog, setblog] = useState<string>('')
   const [title, setTitle] = useState<string>('')
   const [img, setImg] = useState<string | undefined>(undefined);
@@ -207,4 +207,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

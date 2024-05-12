@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import useGetTutorials from '@/hooks/useGetTutorials';
 import { TutorialBody } from '@/components/Tutorials/TutorialBody/TutorialBody';
 
-const page = ({
+const Page = ({
   params
 }: {
   params: {
@@ -26,4 +26,4 @@ const page = ({
   )
 }
 
-export default page
+export default Page

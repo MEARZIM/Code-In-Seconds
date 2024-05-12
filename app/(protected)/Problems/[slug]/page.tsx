@@ -10,7 +10,7 @@ import ProblemGrid from '@/components/Problems/ProblemGrid/ProblemGrid'
 
 const queryClient = new QueryClient()
 
-const page=({
+const Page=({
   params
 } : {
   params: {
@@ -26,4 +26,4 @@ const page=({
 
 
 
-export default page
+export default Page

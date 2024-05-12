@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 export const Sidebar = () => {
     const pathname = usePathname();
     const currentPathname = pathname.split("/");
-    console.log(currentPathname[2])
+    // console.log(currentPathname[2])
     
     const { data, isLoading } = useGetTutorials(currentPathname[2]);
 
