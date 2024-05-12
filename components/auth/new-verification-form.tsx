@@ -1,5 +1,6 @@
 "use client"
 
+import { Suspense } from 'react'
 import { BeatLoader } from "react-spinners"
 import { useSearchParams } from 'next/navigation'
 import React, { useCallback, useEffect, useState } from 'react'
@@ -9,16 +10,18 @@ import { FormSuccess } from './success/form-success'
 import { CardWrapper } from '@/components/auth/card-wrapper'
 import { newVerificationAction } from '@/actions/new-verification'
 
+
+
+
 export const NewVerificationForm = () => {
     const [error, setError] = useState<string | undefined>();
     const [success, setSuccess] = useState<string | undefined>();
 
     const searchParams = useSearchParams();
-
     const token = searchParams.get('token');
 
     const onSubmit = useCallback(() => {
-        if(success || error) {
+        if (success || error) {
             return;
         }
 
@@ -40,8 +43,10 @@ export const NewVerificationForm = () => {
         onSubmit();
     }, [onSubmit])
 
+
     return (
         <div>
+
             <CardWrapper
                 headerLabel="Confirming Your Email"
                 backButtonLabel="Back to signin"
@@ -57,6 +62,7 @@ export const NewVerificationForm = () => {
                     <FormSuccess message={success} />
                 </div>
             </CardWrapper>
+
         </div>
     )
 }

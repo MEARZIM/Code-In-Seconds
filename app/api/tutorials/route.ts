@@ -12,10 +12,10 @@ export async function GET(
         if (!verfiedUser) {
             return new NextResponse("User Not verified", { status: 404 });
         }
-        const { searchParams } = new URL(req.url);
+        const url = new URL(req.url);
        
-        const catSlug = searchParams.get('catSlug');
-        const slug = searchParams.get('slug');
+        const catSlug = url.searchParams.get('catSlug');
+        const slug = url.searchParams.get('slug');
 
 
         if (slug && catSlug) {

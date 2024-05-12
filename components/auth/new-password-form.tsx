@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import * as z from "zod"
 
@@ -24,8 +24,12 @@ import { FormError } from "@/components/auth/errors/form-error"
 import { FormSuccess } from "@/components/auth/success/form-success"
 import { newPassword } from "@/actions/new-password"
 
+
+
+
 export const NewPasswordForm = () => {
-    const token = useSearchParams().get('token')
+    const searchParams = useSearchParams();
+    const token = searchParams.get('token');
 
     const [isPending, startTransiton] = useTransition();
     const [error, setError] = useState<string | undefined>("");
@@ -45,9 +49,9 @@ export const NewPasswordForm = () => {
         setSuccess("");
         console.log(values);
 
-        startTransiton(()=>{
+        startTransiton(() => {
             newPassword(values, token)
-               .then((data) =>{
+                .then((data) => {
                     if (data?.error) {
                         form.reset();
                         setError(data.error);
@@ -57,13 +61,15 @@ export const NewPasswordForm = () => {
                         form.reset();
                         setSuccess(data.success);
                     }
-               })
-               .catch(() => setError("Something went wrong"))
+                })
+                .catch(() => setError("Something went wrong"))
         })
     }
+    
 
     return (
         <>
+
             <CardWrapper
                 headerLabel="Enter a new password"
                 backButtonLabel="Back to Signin"
@@ -95,7 +101,7 @@ export const NewPasswordForm = () => {
                                     </FormItem>
                                 )}
                             />
-                           
+
                         </div>
                         <FormSuccess message={success} />
                         <FormError message={error} />
@@ -104,11 +110,12 @@ export const NewPasswordForm = () => {
                             className="w-full"
                             disabled={isPending}
                         >
-                           Reset Password
+                            Reset Password
                         </Button>
                     </form>
                 </Form>
             </CardWrapper>
+
         </>
     )
 }

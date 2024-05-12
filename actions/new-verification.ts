@@ -4,9 +4,9 @@ import { db } from "@/lib/db";
 import { getUserByEmail } from "@/data/user";
 import { getVerificationTokenByToken } from "@/data/verification-token"
 
-export const newVerificationAction = async (
+export async function newVerificationAction (
     token: string,
-) => {
+) {
     const existingToken =await getVerificationTokenByToken(token);
 
     if (!existingToken){

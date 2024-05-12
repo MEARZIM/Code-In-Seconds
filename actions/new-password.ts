@@ -8,10 +8,10 @@ import { ResetNewPasswordSchema } from "@/schemas"
 import { getPasswordResetTokenByToken } from "@/data/password-reset-token"
 import { db } from "@/lib/db"
 
-export const newPassword = async (
+export async function newPassword (
     values: z.infer<typeof ResetNewPasswordSchema>,
     token?: string | null
-) => {
+) {
     // Token Verification
     if (!token) {
         return { error: "Missing token" }

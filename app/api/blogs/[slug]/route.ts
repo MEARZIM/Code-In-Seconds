@@ -1,8 +1,6 @@
 
 import { db } from "@/lib/db";
-import { NextApiRequest } from "next";
-import { NextRequest, NextResponse } from "next/server";
-import { headers } from 'next/headers';
+import { NextResponse } from "next/server";
 
 
 
@@ -11,9 +9,9 @@ import { headers } from 'next/headers';
 // GET SINGLE POST
 export async function GET(req: Request) {
 
-  const blogId = req.url.split('/').pop();
-
+  
   try {
+    const blogId = req.url.split('/').pop();
     if (blogId) {
       const post = await db.post.update({
         where: { id: blogId },

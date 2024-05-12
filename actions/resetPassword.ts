@@ -9,7 +9,7 @@ import { sendPasswordResetEmail } from "@/lib/mail";
 
 
 
-export const resetPassword = async ( values : z.infer<typeof ResetSchema> ) => {
+export async  function resetPassword ( values : z.infer<typeof ResetSchema> ) {
     const validatedFields = ResetSchema.safeParse(values);
 
     if (!validatedFields.success){

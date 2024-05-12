@@ -12,14 +12,14 @@ export async function GET(
 ) {
     // const userId = req.url.split('?')[1];
 
-    const { searchParams } = new URL(req.url);
-
-    const userId = searchParams.get('userId');
-    const postId = searchParams.get('postId');
-    const page = searchParams.get('page');
-    const cat = searchParams.get('cat');
-   
+    
     try {
+        const { searchParams } = new URL(req.url);
+    
+        const userId = searchParams.get('userId');
+        const postId = searchParams.get('postId');
+        const page = searchParams.get('page');
+        const cat = searchParams.get('cat');
 
         const verfiedUser = await auth();
 

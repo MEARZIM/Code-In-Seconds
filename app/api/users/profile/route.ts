@@ -8,20 +8,21 @@ export async function GET (
     req: Request
 ) {
     try {
-        const url =  req.url.split('?')[1];
+        // const url =  req.url.split('?')[1];
       
 
-        const user = await getUserById(url);
+        // const user = await getUserById(url);
         
-        const followersCount = await db.user.count({
-            where: {
-                followingIds: {
-                    has: url,
-                }
-            }
-        });
-        // console.log(user, followersCount);
-        return NextResponse.json({user, followersCount});
+        // const followersCount = await db.user.count({
+        //     where: {
+        //         followingIds: {
+        //             has: url,
+        //         }
+        //     }
+        // });
+        // // console.log(user, followersCount);
+        // return NextResponse.json({user, followersCount});
+        return NextResponse.json({status: 200});
 
     } catch (error) {
         console.log("[CODE ERROR]", error);
