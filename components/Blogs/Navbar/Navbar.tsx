@@ -9,8 +9,17 @@ import {
 } from '@heroicons/react/24/solid'
 import Link from 'next/link';
 import Image from 'next/image';
+import { TfiWrite } from "react-icons/tfi";
 
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { Button } from "@/components/ui/button"
 import { UserButton } from '@/components/auth/user-button';
+
 
 export const BlogPageNavBar = () => {
     let Links = [
@@ -54,6 +63,29 @@ export const BlogPageNavBar = () => {
                                 </Link>
                             </li>))
                     }
+                    <span className='pl-2 '>
+                        <TooltipProvider>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <Button
+                                        variant="outline"
+                                        className=' bg-inherit border-0 hover:bg-blue-800 duration-500'
+                                    >
+                                        <Link href="/Blogs/write">
+                                            <TfiWrite
+                                                size={16}
+                                                color='white'
+                                                
+                                            />
+                                        </Link>
+                                    </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p>Write Your Blog</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </TooltipProvider>
+                    </span>
 
                     <span className=' pl-4 '>
                         <UserButton />

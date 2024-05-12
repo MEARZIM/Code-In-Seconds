@@ -31,7 +31,9 @@ const page = () => {
   return (
     <div className='flex flex-wrap m-2 gap-10'>
       {data && data.map((category: CategoriesProps) => (
-        <ProblemCard categoryContent={category}/>
+        <section key={category.id} className='max-w-4xl mx-auto'>
+          <ProblemCard categoryContent={category} />
+        </section>
       ))}
     </div>
   )
