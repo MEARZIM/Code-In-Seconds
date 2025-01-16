@@ -8,13 +8,18 @@ import {
   DEFAULT_LOGIN_REDIRECT_URL
 } from "@/routes"
 import { NextRequest } from "next/server"
+import { getToken } from "next-auth/jwt";
 
-const { auth } = NextAuth(authConfig)
 
 
-export default auth((req: NextRequest & { auth: Session | null }): Response | void => {
+export async function middleware(req: NextRequest) {
   const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
+  let isLoggedIn = false;
+  const token = await getToken({ req });
+
+  if (token) {
+    isLoggedIn = true;
+  }
 
   const isApiAuthRoutes = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoutes = publicRoutes.includes(nextUrl.pathname);
@@ -23,7 +28,7 @@ export default auth((req: NextRequest & { auth: Session | null }): Response | vo
   console.log("Routes :", nextUrl.pathname)
   // console.log(nextUrl)
   
-  if (isApiAuthRoutes) { return  };
+  if (isApiAuthRoutes) { return };
 
   if (isAuthRoutes) {
    
@@ -38,7 +43,7 @@ export default auth((req: NextRequest & { auth: Session | null }): Response | vo
   }
 
   return 
-})
+}
 
 // Optionally, don't invoke Middleware on some paths
 export const config = {

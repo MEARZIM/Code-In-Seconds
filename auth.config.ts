@@ -10,26 +10,26 @@ import { getUserByEmail } from "./data/user"
 
 export default {
   providers: [
-    Credentials({
-      async authorize ( credentials ){
-          const validatedFields = LoginSchema.safeParse(credentials)
+    // Credentials({
+    //   async authorize ( credentials ){
+    //       const validatedFields = LoginSchema.safeParse(credentials)
 
-          if(validatedFields.success){
-            const {email, password} = validatedFields.data;
+    //       if(validatedFields.success){
+    //         const {email, password} = validatedFields.data;
 
-            const user = await getUserByEmail(email)
+    //         const user = await getUserByEmail(email)
 
-            if(!user || !user.password) return null;
+    //         if(!user || !user.password) return null;
 
-            const passwordMatchs = await bcrypt.compare(password, user.password);
+    //         const passwordMatchs = await bcrypt.compare(password, user.password);
 
-            if(passwordMatchs){
-              return user;
-            }
-          }
-          return null;
-      }
-    }),
+    //         if(passwordMatchs){
+    //           return user;
+    //         }
+    //       }
+    //       return null;
+    //   }
+    // }),
     GitHubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET
