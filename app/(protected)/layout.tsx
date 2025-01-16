@@ -1,6 +1,9 @@
+"use client";
+
+import React from 'react'
+
 import { AuthProvider } from '@/providers/auth-provider'
 import { SWRProvider } from '@/providers/swr-provider'
-import React from 'react'
 
 const MainComponentlayout = ({
     children

@@ -40,7 +40,7 @@ export const RegisterForm = () => {
         setError("");
         setSuccess("");
 
-        startTransiton(() => { 
+        startTransiton(() => {
             SignUpAction(values)
                 .then((data) => {
                     setError(data.error);
@@ -59,7 +59,10 @@ export const RegisterForm = () => {
                 backButtonHref="/auth/signin"
                 showSocial
             >
-                <Form {...form} >
+                <div className="hidden" />
+
+
+                {/* <Form {...form} >
                     <form
                         className="space-y-6"
                         onSubmit={form.handleSubmit(handleSubmit)}
@@ -136,7 +139,7 @@ export const RegisterForm = () => {
                             Sign Up
                         </Button>
                     </form>
-                </Form>
+                </Form> */}
             </CardWrapper>
         </>
     )

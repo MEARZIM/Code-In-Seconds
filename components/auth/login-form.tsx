@@ -76,7 +76,8 @@ export const LoginForm = () => {
                 backButtonHref="/auth/signup"
                 showSocial
             >
-                <Form {...form} >
+                <div className="hidden" />
+                {/* <Form {...form} >
                     <form
                         className="space-y-6"
                         onSubmit={form.handleSubmit(onSubmit)}
@@ -183,7 +184,7 @@ export const LoginForm = () => {
                         </Button>)}
 
                     </form>
-                </Form>
+                </Form> */}
             </CardWrapper>
         </>
     )

@@ -1,7 +1,8 @@
 "use server"
 
 import * as z from "zod"
-import { AuthError } from "next-auth";
+import AuthError from "next-auth";
+import { signIn } from 'next-auth/react'
 
 
 import { db } from "@/lib/db";
@@ -15,7 +16,6 @@ import {
     generateTwoFactorToken
 }
     from "@/lib/tokens";
-import { signIn } from "@/auth";
 import { LoginSchema } from "@/schemas"
 import { getUserByEmail } from "@/data/user";
 import { DEFAULT_LOGIN_REDIRECT_URL } from "@/routes";
@@ -105,7 +105,7 @@ export const SignInAction = async (values: z.infer<typeof LoginSchema>) => {
         return { success: "Successfully signed in" }
     } catch (error) {
         if (error instanceof AuthError) {
-            switch (error.type) {
+            switch (error) {
                 case "CredentialsSignin":
                     return { error: "Invalid credentials" }
 

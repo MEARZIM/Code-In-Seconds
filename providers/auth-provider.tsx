@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { getServerSession } from 'next-auth';
 import { SessionProvider } from 'next-auth/react';
 
 
@@ -7,7 +7,7 @@ export const AuthProvider = async ({
 }: {
     children: React.ReactNode;
 }) => {
-    const session = await auth();
+    const session = await getServerSession();
 
     return (
         <SessionProvider session={session}>
