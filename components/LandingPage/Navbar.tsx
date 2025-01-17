@@ -13,10 +13,18 @@ const font = Montserrat({ weight: '600', subsets: ['latin'] });
 export const LandingNavbar = () => {
 
     return (
-        <nav className="p-2 bg-transparent flex items-center justify-between">
+        (<nav className="p-2 bg-transparent flex items-center justify-between">
             <Link href="/" className="flex items-center">
                 <div className=" mx-4">
-                    <Image alt="Logo" src="/icon.png" width={40} height={40}/>
+                    <Image
+                        alt="Logo"
+                        src="/icon.png"
+                        width={40}
+                        height={40}
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
                 </div>
                 <h1 className={cn("text-lg md:text-2xl text-sky-400 font-bold", font.className)}>
                     Code In Seconds
@@ -31,6 +39,6 @@ export const LandingNavbar = () => {
                     </Button>
                 </LoginButton>
             </div>
-        </nav >
-    )
+        </nav >)
+    );
 }

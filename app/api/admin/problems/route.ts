@@ -1,7 +1,7 @@
 import { UserRole } from "@prisma/client";
 import { NextResponse } from "next/server";
 
-import { auth } from "@/auth";
+import { getAuthSession } from "@/auth";
 import { currentUserRole } from "@/lib/auth";
 import { db } from "@/lib/db";
 
@@ -10,7 +10,7 @@ export async function POST(
     req: Request,
 ) {
     try {
-        const verfiedUser = await auth();
+        const verfiedUser = await getAuthSession();
         const role = await currentUserRole();
 
         if (!verfiedUser) {

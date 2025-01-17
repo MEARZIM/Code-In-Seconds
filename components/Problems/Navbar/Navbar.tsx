@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { BookOpenIcon, Bars3BottomRightIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { UserButton } from '@/components/auth/user-button';
 import Link from 'next/link';
-import Image from 'next/image';
+import Image from "next/image";
 
 export const ProblemNavbar = () => {
     let Links = [
@@ -18,12 +18,20 @@ export const ProblemNavbar = () => {
     let [open, setOpen] = useState(false);
 
     return (
-        <nav className='sticky z-50 shadow-md w-full top-0 left-0 bg-blue-400'>
+        (<nav className='sticky z-50 shadow-md w-full top-0 left-0 bg-blue-400'>
             <div className='md:flex items-center justify-between mx-auto bg-inherit py-4 md:px-10 px-7 max-w-5xl'>
                 {/* logo section */}
                 <div className='font-bold text-2xl cursor-pointer flex items-center gap-1'>
                 <div className=" mx-4 bg-blue-400">
-                        <Image alt="Logo" src="/icon.png" width={40} height={40} />
+                        <Image
+                            alt="Logo"
+                            src="/icon.png"
+                            width={40}
+                            height={40}
+                            style={{
+                                maxWidth: "100%",
+                                height: "auto"
+                            }} />
                     </div>
 
                     <span className='text-white font-semibold' >CodeInSeconds</span>
@@ -54,8 +62,7 @@ export const ProblemNavbar = () => {
                 </ul>
                 {/* button */}
             </div>
-
-        </nav>
+        </nav>)
     );
 };
 

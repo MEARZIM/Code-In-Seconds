@@ -89,14 +89,17 @@ export const ProductItem = ({
   src: string;
 }) => {
   return (
-    <Link href={href} className="flex space-x-2">
+    (<Link href={href} className="flex space-x-2">
       <Image
         src={src}
         width={140}
         height={70}
         alt={title}
         className="flex-shrink-0 rounded-md shadow-2xl"
-      />
+        style={{
+          maxWidth: "100%",
+          height: "auto"
+        }} />
       <div>
         <h4 className="text-xl font-bold mb-1 text-zinc-700 dark:text-zinc-400">
           {title}
@@ -105,7 +108,7 @@ export const ProductItem = ({
           {description}
         </p>
       </div>
-    </Link>
+    </Link>)
   );
 };
 

@@ -6,7 +6,7 @@ import { AiFillInstagram } from "react-icons/ai";
 
 export const Footer = () => {
   return (
-    <div className="mt-10 px-4 py-5 flex flex-col lg:flex-row items-center justify-between text-gray-500">
+    (<div className="mt-10 px-4 py-5 flex flex-col lg:flex-row items-center justify-between text-gray-500">
       <div className="lg:flex lg:flex-col lg:gap-2">
         <div className="flex items-center gap-4">
           <Image
@@ -14,7 +14,10 @@ export const Footer = () => {
             alt="logo"
             width={50}
             height={50}
-          />
+            style={{
+              maxWidth: "100%",
+              height: "auto"
+            }} />
           <h1 className="text-2xl font-bold text-blue-500">Code in Seconds</h1>
         </div>
         <p className="font-light mx-2">
@@ -46,7 +49,7 @@ export const Footer = () => {
           <Link href="/">Youtube</Link>
         </div>
       </div>
-    </div>
+    </div>)
   );
 };
 

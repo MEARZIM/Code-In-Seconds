@@ -74,12 +74,13 @@ export const authOptions: NextAuthOptions = {
     async session({ token, session }) {
       // console.log({ session })
       if (token && session) {
-        session.user.id = token.id;
+        session.user = {
+          ...session.user,
+          id: token.id!,
+          role: token.role as UserRole,
+        };
       }
-
-      if (token.role && session.user) {
-        session.user.role = token.role as UserRole;
-      }
+      console.log("Session Data:", session);
       return session;
     },
 
@@ -93,13 +94,13 @@ export const authOptions: NextAuthOptions = {
         return token;
       };
 
-      token.role = existUser.role;
-
-      return {
-        ...token,
-        id: existUser.id,
-        role: existUser.role,
+      if (user) {
+        token.id = user.id;
+        token.role = user.role || "USER";
       }
+
+      console.log("JWT Token:", token);
+      return token;
     },
     redirect() {
       return '/'

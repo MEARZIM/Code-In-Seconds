@@ -54,7 +54,7 @@ export const CategoryList = () => {
 
 
   return (
-    <div>
+    (<div>
       <h1 className="my-8 text-3xl font-semibold">Popular Categories</h1>
       <div className="flex flex-wrap gap-4">
         {Category?.map((item: any, index) => (
@@ -69,9 +69,12 @@ export const CategoryList = () => {
                   src={item.img}
                   alt=""
                   // layout="fill"
+                  // objectFit="cover"
                   className="rounded-full object-cover"
-                // objectFit="cover"
-                />
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
             )}
             <Button
@@ -83,7 +86,7 @@ export const CategoryList = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </div>)
   );
 };
 

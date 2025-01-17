@@ -2,7 +2,7 @@
 
 import { z } from "zod"
 import useSWR from "swr"
-import Image from 'next/image';
+import Image from "next/image";
 import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"

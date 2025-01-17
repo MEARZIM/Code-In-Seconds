@@ -178,7 +178,7 @@ const SkeletonFour = () => {
     },
   };
   return (
-    <motion.div
+    (<motion.div
       initial="initial"
       animate="animate"
       whileHover="hover"
@@ -194,7 +194,10 @@ const SkeletonFour = () => {
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Just code in Vanilla Javascript
         </p>
@@ -209,7 +212,10 @@ const SkeletonFour = () => {
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           Tailwind CSS is cool, you know
         </p>
@@ -227,7 +233,10 @@ const SkeletonFour = () => {
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="sm:text-sm text-xs text-center font-semibold text-neutral-500 mt-4">
           I love angular, RSC, and Redux.
         </p>
@@ -235,7 +244,7 @@ const SkeletonFour = () => {
           Helpless
         </p>
       </motion.div>
-    </motion.div>
+    </motion.div>)
   );
 };
 const SkeletonFive = () => {
@@ -265,7 +274,7 @@ const SkeletonFive = () => {
   };
 
   return (
-    <motion.div
+    (<motion.div
       initial="initial"
       whileHover="animate"
       className="flex flex-1 w-full h-full min-h-[6rem] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] flex-col space-y-2"
@@ -280,7 +289,10 @@ const SkeletonFive = () => {
           height="100"
           width="100"
           className="rounded-full h-10 w-10"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="text-xs text-neutral-500">
           There are a lot of cool framerworks out there like React, Angular,
           Vue, Svelte that can make your life ....
@@ -293,7 +305,7 @@ const SkeletonFive = () => {
         <p className="text-xs text-neutral-500">Use PHP.</p>
         <div className="h-6 w-6 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 flex-shrink-0" />
       </motion.div>
-    </motion.div>
+    </motion.div>)
   );
 };
 const items = [

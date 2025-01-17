@@ -32,7 +32,7 @@ const MenuCategories = () => {
   }, [])
 
   return (
-    <div className="mt-8 mb-16 flex flex-wrap gap-4">
+    (<div className="mt-8 mb-16 flex flex-wrap gap-4">
       {Category?.map((item: any, index) => (
         <Link
           href={`/Blogs?cat=${item.title}`}
@@ -45,9 +45,12 @@ const MenuCategories = () => {
                 src={item.img}
                 alt=""
                 // layout="fill"
+                // objectFit="cover"
                 className="rounded-full object-cover"
-              // objectFit="cover"
-              />
+                style={{
+                  maxWidth: "100%",
+                  height: "auto"
+                }} />
             </div>
           )}
           <Button
@@ -59,7 +62,7 @@ const MenuCategories = () => {
           </Button>
         </Link>
       ))}
-    </div>
+    </div>)
   );
 };
 

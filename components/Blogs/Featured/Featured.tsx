@@ -8,13 +8,20 @@ const Featured = () => {
   const user = useCurrentUserThroughSessions();
 
   return (
-    <div className="mt-10">
+    (<div className="mt-10">
       <h1 className="text-6xl font-light mb-8">
         <b>Hey, {user?.name} !</b> Discover stories and creative ideas.
       </h1>
       <div className="flex flex-col lg:flex-row items-center lg:gap-16">
         <div className="lg:flex-1 lg:h-96 relative">
-          <Image src="/culture.png" alt="" layout="fill" objectFit="cover" />
+          <Image
+            src="/culture.png"
+            alt=""
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "cover"
+            }} />
         </div>
         <div className="lg:flex-1 mt-8 lg:mt-0">
           <h1 className="text-3xl font-semibold mb-4">
@@ -30,7 +37,7 @@ const Featured = () => {
          
         </div>
       </div>
-    </div>
+    </div>)
   );
 };
 

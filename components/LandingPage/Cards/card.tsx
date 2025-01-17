@@ -6,7 +6,7 @@ import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export function CardFlip() {
   return (
-    <div className="flex flex-col gap-12 justify-center mx-auto my-4 w-[20rem] md:w-fit md:flex-row md:justify-between bg-white">
+    (<div className="flex flex-col gap-12 justify-center mx-auto my-4 w-[20rem] md:w-fit md:flex-row md:justify-between bg-white">
       <BackgroundGradient className="rounded-[22px] max-w-xs p-4 md:p-10 bg-white dark:bg-zinc-900" animate>
         <Image
           src={`/coding.png`}
@@ -14,7 +14,10 @@ export function CardFlip() {
           height="400"
           width="400"
           className="object-contain"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
           Air Jordan 4 Retro Reimagined
         </p>
@@ -33,7 +36,10 @@ export function CardFlip() {
           height="400"
           width="400"
           className="object-contain"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
           Air Jordan 4 Retro Reimagined
         </p>
@@ -52,7 +58,10 @@ export function CardFlip() {
           height="400"
           width="400"
           className="object-contain"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
           Air Jordan 4 Retro Reimagined
         </p>
@@ -64,6 +73,6 @@ export function CardFlip() {
         </p>
        
       </BackgroundGradient>
-    </div>
+    </div>)
   );
 }

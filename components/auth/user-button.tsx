@@ -22,7 +22,7 @@ import "./userButton.css"
 
 export const UserButton = () => {
     const user = useCurrentUserThroughSessions();
-    // console.log(user);
+    console.log(user);
 
     const isOpen = useManageAccountModal((state) => state.isOpen);
     const onOpen = useManageAccountModal((state) => state.onOpen);
@@ -45,17 +45,21 @@ export const UserButton = () => {
     return (<div>
 
         <div className="relative">
-            <button className="block m-2 rounded-full shadow-lg bg-white" onClick={toggleDropdown}>
+            <Button
+                size={"icon"}
+                className="m-2 rounded-full shadow-lg bg-white hover:cursor-pointer"
+                onClick={toggleDropdown}
+            >
                 {user ? (<Avatar>
                     <AvatarImage
                         alt="User profile picture"
                         src={user?.image || ""}
                     />
-                    <AvatarFallback className="bg-sky-500">
+                    <AvatarFallback className="bg-sky-300">
                         <FaUser className="text-white" />
                     </AvatarFallback>
-                </Avatar>): <Skeleton className="h-12 w-12 rounded-full" />}
-            </button>
+                </Avatar>) : <Skeleton className="h-12 w-12 rounded-full" />}
+            </Button>
 
             {isDropdownOpen && (
                 <div className={`absolute  md:right-2 mt-2 w-72 rounded-md shadow-lg bg-white ${isDropdownOpen ? 'slide-in' : 'slide-out'}`}>

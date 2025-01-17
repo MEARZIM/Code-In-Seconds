@@ -44,7 +44,7 @@ const ImageUpload: React.FC<DropzoneProps> = ({ onChange, label, value, disabled
     });
 
     return (
-        <div {...getRootProps({
+        (<div {...getRootProps({
             className: cn(
                 'w-full p-4 text-white text-center border-2 border-dotted rounded-md border-neutral-700',
                 className
@@ -58,12 +58,15 @@ const ImageUpload: React.FC<DropzoneProps> = ({ onChange, label, value, disabled
                         height="100"
                         width="100"
                         alt="Uploaded image"
-                    />
+                        style={{
+                            maxWidth: "100%",
+                            height: "auto"
+                        }} />
                 </div>
             ) : (
                 <p className="text-white">{label}</p>
             )}
-        </div>
+        </div>)
     );
 }
 
